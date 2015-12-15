@@ -1,0 +1,28 @@
+
+.reborde {
+    background-color: #DBDBDB;
+    height: 900px;
+    width: 680px;
+    position: relative;
+}
+.element {
+    border-style: solid; border-width: 1px;
+    float: left;
+    height: 280px;
+    left: 9px;
+    margin: 11px;   
+    top: 200px;
+    width: 200px;
+}
+.precio {
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+    left: 1px;
+    position: relative;
+    top: 225px;
+}
+
+body{
+    background-color: #BBBBDB;
+}

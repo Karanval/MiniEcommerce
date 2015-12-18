@@ -31,7 +31,8 @@
 							     die("Connection failed: " . $conn->connect_error);
 							}
 
-							$sql = "SELECT NOMBRE, IMG, PRECIO FROM productos";
+							$cont = 0;//para los indices 
+							$sql = "SELECT NOMBRE, IMG, PRECIO FROM productos LIMIT 9 OFFSET $cont";
 							$result = $conn->query($sql);
 
 							if ($result->num_rows > 0) {

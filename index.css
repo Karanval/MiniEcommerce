@@ -1,18 +1,11 @@
-
 .reborde {
     background-color: #DBDBDB;
     height: 900px;
-    width: 680px;
+    width: 900px;
     position: relative;
 }
 .element {
-    border-style: solid; border-width: 1px;
-    float: left;
-    height: 280px;
-    left: 9px;
-    margin: 11px;   
-    top: 200px;
-    width: 200px;
+
 }
 .precio {
     color: red;
@@ -20,9 +13,31 @@
     font-weight: bold;
     left: 1px;
     position: relative;
-    top: 225px;
+    top: 220px;
 }
 
+
+.title{
+		color: red;
+		font-size: 40px;
+		font-style: italic;
+		font-weight: bold;
+}
 body{
     background-color: #BBBBDB;
+}
+
+ul{
+	text-decoration: none;
+}
+
+li{
+	border-style: solid; border-width: 1px;
+	text-decoration: none;
+	display: inline-block;
+	background-color: #DBDBDB;
+	margin: 10px;
+	width:  240px;
+	height: 280px;
+
 }

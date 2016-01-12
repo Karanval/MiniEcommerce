@@ -7,7 +7,7 @@
 	</title>
 
 
-	<link rel="stylesheet" type="text/css" href="./css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
 
 </head>
 <body>
@@ -48,7 +48,7 @@
 							       $precio = $row["PRECIO"];
 							       echo "<li>
 											 			<div >
-											 			<a href="."product.html"-">
+											 			<a href="."product.html".">
 											 						<span class="."precio"." >
 											 								".  $precio."
 											 						</span>

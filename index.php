@@ -46,7 +46,7 @@
 							 					"."$nombre"."
 											</p>
 											<p class="."product-price"." >
-													".  $precio."
+													Bs. ".  $precio."
 											</p>
 							 			</a>
 										</div>

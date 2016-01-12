@@ -1,25 +1,30 @@
+
 <!DOCTYPE html>
 <html>
 <head>
 	<title>
-		online
+		i dont know.....
 	</title>
-    <link rel="STYLESHEET" type="text/css" href="index.css">
-</head>
-<body class="body" >
 
-		<h1 >
-			<center>
-                MOKA   MINT
-            </center>
-			<br>
-		</h1>
+
+	<link rel="stylesheet" type="text/css" href="./css/index.css">
+
+</head>
+<body>
 
 	<center>
+			<span class="title">
+						MOKA MINT
+						<br>
+						<br>
+			</span>
+	</center>
 
-            <div class="">
-            <div class="">
-            <fieldset class="reborde">
+	<center>
+	<section class="reborde">
+
+	<ul>
+
 							<?php
 							$servername = "localhost";
 							$username = "root";
@@ -31,7 +36,7 @@
 							     die("Connection failed: " . $conn->connect_error);
 							}
 
-							$cont = 5;//para los indices 
+							$cont = 5;//para los indices
 							$sql = "SELECT NOMBRE, IMG, PRECIO FROM productos LIMIT 9 OFFSET $cont";
 							$result = $conn->query($sql);
 
@@ -41,18 +46,19 @@
 							       $nombre = $row["NOMBRE"];
 							       $img_path = $row["IMG"];
 							       $precio = $row["PRECIO"];
-							       echo "<div class="."element".">
-							               <span class="."precio".">
-							                 ".  $precio."
-							               </span>
+							       echo "<li>
+											 			<div >
+											 			<a href="."product.html"-">
+											 						<span class="."precio"." >
+											 								".  $precio."
+											 						</span>
 
-							                 <img width="."200px"." height="."200px"." src=".$img_path." title="."queen1".">
-
-							               <div>
-							                   <br><br>
-							                   <a class="."titvideo".">".$nombre."</a>
-							               </div>
-							             </div>";
+											 								<img width="."200px"." height="."200px"." src=".$img_path." title="."queen1".">
+											 								<br><br>
+											 								image1
+											 			</a>
+											 			</div>
+											 		</li>";
 							     }
 							} else {
 							     echo "0 results";

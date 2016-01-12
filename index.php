@@ -3,7 +3,7 @@
 <html>
 <head>
 	<title>
-		i dont know.....
+		Home
 	</title>
 
 
@@ -55,7 +55,7 @@
 
 											 								<img width="."200px"." height="."200px"." src=".$img_path." title="."queen1".">
 											 								<br><br>
-											 								image1
+											 								"."$nombre"."
 											 			</a>
 											 			</div>
 											 		</li>";
@@ -67,33 +67,26 @@
 							$conn->close();
 							?>
 
+						</ul>
+							</section >
+							</center>
 
-            </fieldset>
+							<center>
+							<div class="">
+									<div class="">
+											<a class="" href="">1</a>
+											<a class="" href="example.html">2</a>
+											<a class="" href="example.html">3</a>
+											<a class="" href="example.html">4</a>
+									</div>
 
-                <div class="">
-                    <div class="">
-                    </div>
-                    <div class="">
-                        <a class="" href="">1</a>
-                        <a class="" href="other_link">2</a>
-                        <a class="" href="other_link">3</a>
-                        <a class="" href="other_link">4</a>
-                    </div>
-
-                    <div class="n">
-                        <a class="" href="other_link">Siguiente</a>
-                    </div>
-            </div>
-            </div>
-            </div>
-
-
-
-    </center>
+									<div class="n">
+											<a class="" href="break.html">Siguiente</a>
+									</div>
+							</div>
+						</center>
 
 
 
-
-</body>
-</html>
-Status
+						</body>
+						</html>

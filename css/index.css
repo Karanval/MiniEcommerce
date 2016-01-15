@@ -1,39 +1,56 @@
-.reborde {
-    background-color: #DBDBDB;
-    height: 900px;
-    width: 900px;
-    position: relative;
+body{
+    background-color: #BBBBDB;
+    font-size: 16px;
 }
-.element {
 
-}
-.precio {
-    color: red;
-    font-size: 20px;
-    font-weight: bold;
-    left: 1px;
-    position: relative;
-    top: 220px;
-}
 .title{
 		color: red;
 		font-size: 40px;
 		font-style: italic;
-		font-weight: bold;
+    text-align: center;
 }
-body{
-    background-color: #BBBBDB;
+.products-section {
+    background-color: #DBDBDB;
+    height: 900px;
+    width: 900px;
 }
-ul{
-    padding-left: 0px;
+.products-list{
+  margin: 0;
+  padding: 0;
 }
-li{
-	border-style: solid; border-width: 1px;
+.product{
 	text-decoration: none;
 	display: inline-block;
-	background-color: #DBDBDB;
 	margin: 10px;
 	width:  240px;
 	height: 280px;
+}
+.product-link{
+  display: block;
+  text-decoration: none;
+  margin: 0 auto;
+}
+.product-img{
+  margin: 0 auto;
+}
+.product-texts{
 
+}
+.product-name{
+  color: #000000;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  font-size: 20px;
+  display: inline-block;
+
+}
+
+.product-price{
+  color: grey;
+  display:inline-block;
+  margin: 0;
+  padding: 0;
+  width: 49%;
+  text-align: right;
 }

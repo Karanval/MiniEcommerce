@@ -10,6 +10,7 @@
     </header>
     <section class="customer-section">
       <form class="new-customer-form" action="add-customer-result.php">
+        <p class="form-especifications">The fields marked with * are mandatory</p>
         <fieldset class="customer-fieldset">
            <legend>New here:</legend>
            <input class="customer-data" type="text" name="email" placeholder="Please enter email"><br>
@@ -18,17 +19,17 @@
         </fieldset>
         <fieldset class="customer-fieldset">
            <legend>Personal information:</legend>
-           <input class="customer-data" type="text" name="firstname" placeholder="Please enter name(s)"><br>
-           <input class="customer-data" type="text" name="lastname" placeholder="Please enter lastname(s)"><br>
+           <input class="customer-data" type="text" name="firstname" placeholder="Please enter name(s)">*<br>
+           <input class="customer-data" type="text" name="lastname" placeholder="Please enter lastname(s)">*<br>
            <input class="customer-data" type="number" name="phone" placeholder="Please enter phonenumber"><br>
         </fieldset>
         <fieldset class="customer-fieldset">
           <legend>Shipping information:</legend>
-           <input class="customer-data" type="text" name="address" placeholder="Please enter address"><br>
-           <input class="customer-data" type="text" name="city" placeholder="Please enter city"><br>
+           <input class="customer-data" type="text" name="address" placeholder="Please enter address">*<br>
+           <input class="customer-data" type="text" name="city" placeholder="Please enter city">*<br>
            <input class="customer-data" type="text" name="state" placeholder="Please enter state"><br>
            <input class="customer-data" type="text" name="postal_code" placeholder="Please enter postal code"><br>
-           <input class="customer-data" type="text" name="country" placeholder="Please enter country"><br>
+           <input class="customer-data" type="text" name="country" placeholder="Please enter country">*<br>
         </fieldset>
         <fieldset class="customer-fieldset">
           <legend>Account preferences:</legend>

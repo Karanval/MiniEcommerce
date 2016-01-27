@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add Customer</title>
+  </head>
+  <body>
+    <header>
+      <h3>Signin</h3>
+    </header>
+    <section class="customer-section">
+      <form class="new-customer-form" action="add-customer-result.php">
+        <fieldset class="customer-fieldset">
+           <legend>New here:</legend>
+           <input class="customer-data" type="text" name="email" placeholder="Please enter email"><br>
+           <input class="customer-data" type="password" name="password" placeholder="Create password"><br>
+           <input class="customer-data" type="password" name="password" placeholder="Confirm password"><br>
+        </fieldset>
+        <fieldset class="customer-fieldset">
+           <legend>Personal information:</legend>
+           <input class="customer-data" type="text" name="firstname" placeholder="Please enter name(s)"><br>
+           <input class="customer-data" type="text" name="lastname" placeholder="Please enter lastname(s)"><br>
+           <input class="customer-data" type="number" name="phone" placeholder="Please enter phonenumber"><br>
+        </fieldset>
+        <fieldset class="customer-fieldset">
+          <legend>Shipping information:</legend>
+           <input class="customer-data" type="text" name="address" placeholder="Please enter address"><br>
+           <input class="customer-data" type="text" name="city" placeholder="Please enter city"><br>
+           <input class="customer-data" type="text" name="state" placeholder="Please enter state"><br>
+           <input class="customer-data" type="text" name="postal_code" placeholder="Please enter postal code"><br>
+           <input class="customer-data" type="text" name="country" placeholder="Please enter country"><br>
+        </fieldset>
+        <fieldset class="customer-fieldset">
+          <legend>Account preferences:</legend>
+           <input class="customer-data" type="number" name="credit_limit" placeholder="Please enter credit limit"><br>
+        </fieldset>
+        <input class="customer-submit" type="submit" value="Create Account">
+      </form>
+    </section>
+  </body>
+</html>

@@ -28,8 +28,8 @@
 			     die("Connection failed: " . $conn->connect_error);
 			}
 
-			$cont = 5;//para los indices
-			$sql = "SELECT NOMBRE, IMG, PRECIO FROM productos LIMIT 9 OFFSET $cont";
+			$pagina = 3;//para los indices
+			$sql = "SELECT NOMBRE, IMG, PRECIO FROM productos LIMIT 9 OFFSET $pagina";
 			$result = $conn->query($sql);
 
 			if ($result->num_rows > 0) {
@@ -60,22 +60,8 @@
 			?>
 
 		</ul>
-			</section >
-			</center>
+	</section >
+  </center>
 
-			<center>
-			<div class="">
-					<div class="">
-							<a class="" href="">1</a>
-							<a class="" href="example.html">2</a>
-							<a class="" href="example.html">3</a>
-							<a class="" href="example.html">4</a>
-					</div>
-
-					<div class="n">
-							<a class="" href="break.html">Siguiente</a>
-					</div>
-			</div>
-		</center>
 </body>
 </html>

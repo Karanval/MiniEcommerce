@@ -18,6 +18,16 @@
 	<section class="products-section">
 		<ul class="products-list">
 			<?php
+
+			if(isset($_GET['pagina']) && $_GET['pagina']!=1){
+  			$pagina = 0;
+				for ($i=1; $i <$_GET['pagina'] ; $i++) {
+					$pagina = $pagina + 9;
+				}
+			} else {
+				$pagina = 1;
+			}
+
 			$servername = "localhost";
 			$username = "root";
 			$db = "miniecommerce";
@@ -28,8 +38,8 @@
 			     die("Connection failed: " . $conn->connect_error);
 			}
 
-			$cont = 5;//para los indices
-			$sql = "SELECT NOMBRE, IMG, PRECIO FROM productos LIMIT 9 OFFSET $cont";
+			//$pagina = 3;//para los indices
+			$sql = "SELECT NOMBRE, IMG, PRECIO FROM productos LIMIT 9 OFFSET $pagina";
 			$result = $conn->query($sql);
 
 			if ($result->num_rows > 0) {
@@ -60,22 +70,28 @@
 			?>
 
 		</ul>
-			</section >
-			</center>
+	</section >
+  </center>
+	<section class="index-section">
+		<form class="index" action="index.php">
+			<?php
+				$servername = "localhost";
+				$username = "root";
+				$db = "miniecommerce";
+				$conn = new mysqli($servername, $username, "", $db);
+				if ($conn->connect_error) {
+						 echo "Connection failed: " . $conn->connect_error;
+				}
+				$sql = "SELECT NOMBRE FROM productos";
+				$result = $conn->query($sql);
 
-			<center>
-			<div class="">
-					<div class="">
-							<a class="" href="">1</a>
-							<a class="" href="example.html">2</a>
-							<a class="" href="example.html">3</a>
-							<a class="" href="example.html">4</a>
-					</div>
+				$cont = round(($result->num_rows) / 9);
+				for ($i=1; $i <= $cont; $i++) {
+					echo "<input class="."index-item"." type="."submit"." name="."pagina"." value=".$i.">";
+				}
+			?>
+		</form>
+	</section>
 
-					<div class="n">
-							<a class="" href="break.html">Siguiente</a>
-					</div>
-			</div>
-		</center>
 </body>
 </html>

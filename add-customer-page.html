@@ -3,19 +3,24 @@
   <head>
     <meta charset="utf-8">
     <title>Add Customer</title>
+    <link rel="stylesheet" type="text/css" href="css/new-custommer.css">
   </head>
   <body>
     <header>
-      <h3>Signin</h3>
+      <h1 class="title">Customer Options</h1>
     </header>
-    <section class="customer-section">
+    <section class="forms">
       <form class="new-customer-form" action="add-customer-result.php">
+        <h2 class="form-title"> Signin </h2>
         <p class="form-especifications">The fields marked with * are mandatory</p>
         <fieldset class="customer-fieldset">
-           <legend>New here:</legend>
-           <input class="customer-data" type="text" name="email" placeholder="Please enter email"><br>
-           <input class="customer-data" type="password" name="password" placeholder="Create password"><br>
-           <input class="customer-data" type="password" name="password" placeholder="Confirm password"><br>
+           <legend>Online information:</legend>
+           <input class="customer-data" type="text" name="email" placeholder="Please enter email">*<br>
+           <input class="customer-data" type="password" name="password"
+           id="password" placeholder="Create password">*<br>
+           <input class="customer-data" type="confirm-password" id="confirm-password"
+           placeholder="Confirm password"  keyup="checkPasswordMatch();">*<br>
+           <div class="registrationFormAlert" id="divCheckPasswordMatch">
         </fieldset>
         <fieldset class="customer-fieldset">
            <legend>Personal information:</legend>
@@ -35,8 +40,22 @@
           <legend>Account preferences:</legend>
            <input class="customer-data" type="number" name="credit_limit" placeholder="Please enter credit limit"><br>
         </fieldset>
-        <input class="customer-submit" type="submit" value="Create Account">
+        <input class="customer-create" type="submit" value="Create Account">
       </form>
+
+
+      <form class="login-form" action="login-result.php">
+        <fieldset class="customer-fieldset">
+          <h2 class="form-title"> Login </h2>
+           <input class="customer-data" type="text" name="email" placeholder="Please enter email"><br>
+           <input class="customer-data" type="password" name="password" placeholder="Create password"><br>
+        </fieldset>
+        <input class="customer-login" type="submit" value="Login">
+      </form>
+
+      <a class="cancel-link" href="index.php">
+        <button class="cancel">Cancel</button>
+      </a>
     </section>
   </body>
 </html>

@@ -20,6 +20,11 @@
       } else {
         $password = null;
       }
+      if(isset($_GET['confirm-password'])){
+        $confirm_password = $_GET['confirm-password'];
+      } else {
+        $confirm_password = null;
+      }
       if(isset($_GET['firstname'])){
         $name = $_GET['firstname'];
       } else {
@@ -81,11 +86,15 @@
       password) VALUES ('".$name."', '".$lastname."', '".$phone."', '".$address."', '".
       $city."', '". $state."', '".$postal_code."', '".$country."', '".$credit_limit."', '"
       .$email."', '".$password."')";
-      if(!empty($name) && !empty($lastname) && !empty($address) && !empty($city)
-      && !empty($country)){
-			  $result = $conn->query($sql);
+      if(!empty($confirm_password) && !empty($password) && $confirm_password==$password){
+        if(!empty($name) && !empty($lastname) && !empty($address) && !empty($city)
+        && !empty($country) && !empty($email)){
+  			  $result = $conn->query($sql);
+        }
+      } else {
+        echo "<p class="."result-message".">passwords don't match </p>";
       }
-      if($result){
+      if(isset($result) && $result){
         echo "<p class="."result-message"."> Registry correct </p>";
       } else {
         echo "<p class="."result-message"."> Registry incorrect, please review
@@ -94,6 +103,8 @@
 
       $conn->close();
     ?>
-    <button class="continue" action="index.php">Continue</button>
+    <a href="index.php">
+      <button class="continue">Continue</button>
+    </a>
   </body>
 </html>

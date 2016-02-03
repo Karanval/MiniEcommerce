@@ -1,0 +1,19 @@
+body{
+    background-color: #BBBBDB;
+}
+.buttonSave{
+  width: 200px;
+  height: 40px;
+  margin: 0px;
+}
+.buttonLine{
+	display : inline-block;
+}
+.buttonErro{
+	display: inline-block;
+}
+.setCentral{
+
+	width: 400px;
+	
+}

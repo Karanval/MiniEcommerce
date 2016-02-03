@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Add customer result</title>
+    <link rel="stylesheet" type="text/css" href="css/new-custommer.css">
   </head>
   <body>
     <header class="result-header">
@@ -86,7 +87,7 @@
       password) VALUES ('".$name."', '".$lastname."', '".$phone."', '".$address."', '".
       $city."', '". $state."', '".$postal_code."', '".$country."', '".$credit_limit."', '"
       .$email."', '".$password."')";
-      if(!empty($confirm_password) && !empty($password) && $confirm_password==$password){
+      if(!empty($confirm_password) && !empty($password) && strcmp($confirm_password,$password)==0){
         if(!empty($name) && !empty($lastname) && !empty($address) && !empty($city)
         && !empty($country) && !empty($email)){
   			  $result = $conn->query($sql);

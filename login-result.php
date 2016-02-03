@@ -2,11 +2,12 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Login result</title>
+    <title>Login Result</title>
+    <link rel="stylesheet" type="text/css" href="css/new-custommer.css">
   </head>
   <body>
     <header class="result-header">
-      <h1 class="title">Login confirmation</h1>
+      <h1 class="title">Mini Ecommerce</h1>
     </header>
     <?php
 

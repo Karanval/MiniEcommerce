@@ -3,8 +3,10 @@ body{
   font-size: 16px;
 }
 .title{
-  font-style: italic;
-  text-align: center;
+		color: red;
+		font-size: 40px;
+		font-style: italic;
+    text-align: center;
 }
 .forms {
   background-color: #DBDBDB;

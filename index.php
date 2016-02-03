@@ -10,8 +10,10 @@
 </head>
 <body>
 	<header>
+		<a class="customer-link" href="add-customer-page.html">
+			<img width="30px" height="30px" src="images/icono-persona.png" class="icono-cliente"></a>
 		<h1 class="title">
-				Mini e-commerce
+			Mini e-commerce
 		</h1>
 	</header>
 	<center>

@@ -1,0 +1,54 @@
+body{
+  background-color: #BBBBDB;
+  font-size: 16px;
+}
+.title{
+		color: red;
+		font-size: 40px;
+		font-style: italic;
+    text-align: center;
+}
+.forms {
+  background-color: #DBDBDB;
+  height: 700px;
+  width: 900px;
+}
+.new-customer-form{
+  display : inline-block;
+  width: 45%;
+  vertical-align: top;
+  margin: 15px;
+}
+.form-title{
+  font-style: italic;
+  text-align: left;
+}
+.form-especifications{
+  font-style: italic;
+  color: gray;
+  text-align: right;
+}
+.customer-fieldset{
+  border: none;
+  font-style: italic;
+}
+.customer-data{
+  border: none;
+  border-bottom: 1px solid;
+  margin-left: 5px;
+  margin-bottom: 2px;
+}
+.customer-create{
+  margin: 5px 40%;
+}
+.login-form{
+  display : inline-block;
+  width: 45%;
+  vertical-align: middle;
+  margin: 15px;
+}
+.customer-login{
+  margin: 5px 40%;}
+.cancel-link{
+  margin: 5px 40%;
+}

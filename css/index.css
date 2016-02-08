@@ -56,3 +56,14 @@ body{
   width: 49%;
   text-align: right;
 }
+.index-section{
+  text-align: center;
+}
+.index{}
+.index-item[type="submit"]{
+  border: none;
+  color: #0000ff;
+  text-decoration: underline;
+  font-style: italic;
+  background-color: inherit;;
+}

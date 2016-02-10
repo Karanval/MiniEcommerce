@@ -11,19 +11,15 @@ body{
 }
 .products-section {
     background-color: #DBDBDB;
-    height: 900px;
+    height: 250px;
     width: 900px;
-}
-.products-list{
-  margin: 0;
-  padding: 0;
 }
 .product{
 	text-decoration: none;
 	display: inline-block;
 	margin: 10px;
 	width:  240px;
-	height: 280px;
+	height: 250px;
 }
 .product-link{
   display: block;
@@ -33,9 +29,7 @@ body{
 .product-img{
   margin: 0 auto;
 }
-.product-texts{
 
-}
 .product-name{
   color: #000000;
   margin: 0;
@@ -45,7 +39,11 @@ body{
   display: inline-block;
 
 }
-
+.product-detail{
+  margin: 0;
+  padding: 0;
+  height: 300px;
+}
 .product-price{
   color: grey;
   display:inline-block;
@@ -53,4 +51,21 @@ body{
   padding: 0;
   width: 49%;
   text-align: right;
+}
+
+.principal-product{
+  background-color: #DBDBDB;
+  height: 250px;
+  width: 600px;
+}
+.button1{
+  width: 140px;
+  height: 30px;
+  margin: 10px;
+
+
+}
+.marginProduct{
+  padding: 10px;
+  border: transparent: 10px;
 }

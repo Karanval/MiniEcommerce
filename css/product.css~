@@ -1,0 +1,92 @@
+body{
+  font-family:sans-serif;
+  background-color: #BBBBDB;
+}
+
+.mainBlock{
+  margin: 40px;
+}
+
+.center{
+  padding-left: 0px;
+}
+.secBorder {
+    background-color: #DBDBDB;
+    margin: 50px;
+    height: 350px;
+    width: 700px;
+}
+
+.button1{
+  width: 140px;
+  height: 30px;
+  margin: 0px;
+
+
+}
+.productBox{
+  border-style: solid; border-width: 1px;
+  text-decoration: none;
+  display: inline-block;
+  background-color: #DBDBDB;
+  margin: 10px;
+  width:  240px;
+  height: 280px;
+  padding: 20px;
+}
+.marginProduct{
+  padding: 10px;
+  border: transparent: 10px;
+}
+.marginCont{
+  color: buttontext;
+  height: 23px;
+  border-style: solid; border-width: 1px;
+  padding: 1px;
+  border: transparent: 10px;
+  text-decoration: none;
+  display: inline-block;
+}
+.infoBox{
+  text-decoration: none;
+  display: inline-block;
+  background-color: #DBDBDB;
+  margin: 10px;
+  width:  240px;
+  height: 280px;
+  padding: 20px;
+}
+.cont{
+  border-style: solid;border-width: 1px;
+  display: inline-block;
+  margin: 4px;
+  width: 60px;
+
+}
+
+.suReborde{
+    background-color: #DBDBDB;
+    margin: 10px;
+    height: 350px;
+    width: 1000px;
+    position: relative;
+}
+.suggestion{
+  border-style: solid; border-width: 1px;
+  text-decoration: none;
+  display: inline-block;
+  background-color: #DBDBDB;
+  margin: 10px;
+  width:  240px;
+  height: 280px;
+  padding: 20px;
+
+}
+.cost{
+    font-family:sans-serif;
+    font-size: 20px;
+    margin: 10px;
+}
+.suProduct{
+  style= "margin: 10px;"
+}

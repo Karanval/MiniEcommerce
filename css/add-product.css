@@ -1,0 +1,75 @@
+body{
+  background-color: #BBBBDB;
+  font-size: 16px;
+}
+.title{
+		color: red;
+		font-size: 40px;
+		font-style: italic;
+    text-align: center;
+}
+.forms {
+  background-color: #DBDBDB;
+  height: 400px;
+  width: 600px;
+}
+.new-product-form{
+  display : inline-block;
+  width: 45%;
+  vertical-align: top;
+  margin: 15px;
+}
+.form-title{
+  font-style: italic;
+  text-align: left;
+}
+.form-especifications{
+  font-style: italic;
+  color: gray;
+  text-align: right;
+}
+.product-fieldset{
+  font-style: italic;
+  width: 400px;
+}
+.product-data{
+  border: none;
+  border-bottom: 1px solid;
+  margin-left: 5px;
+  margin-bottom: 2px;
+}
+.product-submit{
+  margin: 10px 40%;
+}
+.cancel-link{
+  margin: 10px 40%;
+}
+.result-message{
+  font-style: italic;
+  text-align: left;
+}
+.product-button{
+  margin: 20px 40%;
+  font-style: italic;
+  text-align: center;
+}
+.button1{
+  width: 140px;
+  height: 30px;
+  margin: 10px;
+}
+.par{
+  margin: 0px;
+}
+.product-detail{
+  margin: 0;
+  padding: 0;
+  height: 400px;
+}
+.product{
+	text-decoration: none;
+	display: inline-block;
+	margin: 10px;
+	width:  240px;
+	height: 250px;
+}

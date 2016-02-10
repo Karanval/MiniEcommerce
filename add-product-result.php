@@ -52,16 +52,18 @@
 							        $stock = null;
 							      }
 
+										$path = $path.$_FILES['file']["name"];
+
 							      $conn = new mysqli("localhost","root", "","miniecommerce");
 							      if ($conn->connect_error) {
 							           die("Connection failed: ".$conn->connect_error);
 							      }
 
-										$path = $path.$_FILES['file']["name"];
+										if(!empty($name) && !empty($cost) && !empty($description)&& !empty($path)&& !empty($stock)){
 
-							      if(!empty($name) && !empty($cost) && !empty($description)&& !empty($path)&& !empty($stock)){
-											$sql = "INSERT INTO productos (NOMBRE,IMG,PRECIO,STOCK)
-											VALUES ('".$name."', '".$path."', '".$cost."', '".$stock."')";
+											$sql = "INSERT INTO productos (NOMBRE,IMG,PRECIO,STOCK) VALUES ('".$name."', '".$path."', '".$cost."', '".$stock."')";
+											$conn->query($sql);
+											$conn->close();
 
 											move_uploaded_file($_FILES['file']["tmp_name"],$path);
 											echo "<center>
@@ -92,7 +94,7 @@
 															<p class= "."result-message".">Registry incorrect, please review </p>
 														</center>";
 							      }
-							      $conn->close();
+
 					}
 			}
 		} else {

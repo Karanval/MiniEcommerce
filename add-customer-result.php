@@ -10,6 +10,7 @@
       <h1 class="title">Registry confirmation</h1>
     </header>
     <?php
+
       if(isset($_GET['email'])){
         $email = $_GET['email'];
       } else{

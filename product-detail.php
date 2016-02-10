@@ -37,31 +37,37 @@
 					$row = $result->fetch_assoc();
 					$name = $row["NOMBRE"];
 					$path = $row["IMG"];
+					$cost = $row["PRECIO"];
 					$stock = $row["STOCK"];
+
 
 					echo "  <center>
 					    <section
 							class="."principal-product".">
 					      <ul class = "."product-detail".">
-					            <li class = "."product".">
+					            <li class = "."main-product".">
 					              <div class = "."marginProduct".">
-					                  <img width="."200px"." height="."200px"." src="."$path"." >
+					                  <img width="."300px"." height="."300px"." src="."$path"." >
 
 					              </div>
 					            </li >
 
-					            <li class = "."product".">
+					            <li class = "."main-product".">
 													<center>
 															<h1 class="."product-name"."> "."$name"," </h1>
+															<br>
+															<p class = "."product-name".">
+																	Cost :....$ "."$cost"."
+															</p>
 															<br>
 															<p class = "."product-name".">
 																	Stock :...."."$stock"."
 															</p>
 															<br>
-															<br>
 					                    <button class="."button1".">
 					                      Agregar al carrito
 					                    </button>
+															<br><br>
 													</center>
 					            </li>
 					      </ul>

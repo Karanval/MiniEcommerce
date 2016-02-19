@@ -11,13 +11,13 @@
     </header>
     <?php
 
-      if(isset($_GET['email'])){
-        $email = $_GET['email'];
+      if(isset($_POST['login'])){
+        $login = $_POST['login'];
       } else{
-        $email = null;
+        $login = null;
       }
-      if(isset($_GET['password'])){
-        $password = $_GET['password'];
+      if(isset($_POST['password'])){
+        $password = $_POST['password'];
       } else {
         $password = null;
       }
@@ -32,16 +32,18 @@
            die("Connection failed: " . $conn->connect_error);
       }
 
-      $sql = "SELECT FROM cliente WHERE email =".$email."'AND password= '".$password."')";
-      if(!empty($email) && !empty($password)){
-  			  $result = $conn->query($sql);
-      }
-      if(isset($result) && $result){
-        echo "<p class="."result-message"."> Login correct </p>";
-      } else {
-        echo "<p class="."result-message"."> Login incorrect</p>";
-      }
+      if(!empty($login) && !empty($password)){
+        $sql = "SELECT LOGIN, PASSWD FROM cliente WHERE LOGIN='".$login."' AND PASSWD ='$password'";
+        $result = $conn->query($sql);
 
+        if ($result->num_rows > 0) {
+          echo "<p class="."result-message".">Login Successful </p>";
+        } else {
+            echo "<p class="."result-message".">Incorrect Login </p>";
+        }
+      } else {
+        echo "<p class="."result-message".">Enter Login AND Password </p>";
+      }
       $conn->close();
     ?>
     <a href="index.php">

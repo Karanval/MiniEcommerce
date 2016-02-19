@@ -11,63 +11,63 @@
     </header>
     <?php
 
-      if(isset($_GET['email'])){
-        $email = $_GET['email'];
-      } else{
-        $email = null;
+      if(isset($_POST['login'])){
+        $login = $_POST['login'];
+      } else {
+        $login = null;
       }
-      if(isset($_GET['password'])){
-        $password = $_GET['password'];
+      if(isset($_POST['password'])){
+        $password = $_POST['password'];
       } else {
         $password = null;
       }
-      if(isset($_GET['confirm-password'])){
-        $confirm_password = $_GET['confirm-password'];
+      if(isset($_POST['confirm-password'])){
+        $confirm_password = $_POST['confirm-password'];
       } else {
         $confirm_password = null;
       }
-      if(isset($_GET['firstname'])){
-        $name = $_GET['firstname'];
+      if(isset($_POST['firstname'])){
+        $name = $_POST['firstname'];
       } else {
         $name = null;
       }
-      if(isset($_GET['lastname'])){
-        $lastname = $_GET['lastname'];
+      if(isset($_POST['lastname'])){
+        $lastname = $_POST['lastname'];
       } else{
         $lastname = null;
       }
-      if(isset($_GET['phone'])){
-        $phone = $_GET['phone'];
+      if(isset($_POST['phone'])){
+        $phone = $_POST['phone'];
       } else {
         $phone = null;
       }
-      if(isset($_GET['address'])){
-        $address = $_GET['address'];
+      if(isset($_POST['address'])){
+        $address = $_POST['address'];
       } else {
         $address = null;
       }
-      if(isset($_GET['city'])){
-        $city = $_GET['city'];
+      if(isset($_POST['city'])){
+        $city = $_POST['city'];
       } else {
         $city = null;
       }
-      if(isset($_GET['state'])){
-        $state = $_GET['state'];
+      if(isset($_POST['state'])){
+        $state = $_POST['state'];
       } else {
         $state = null;
       }
-      if(isset($_GET['postal_code'])){
-        $postal_code = $_GET['postal_code'];
+      if(isset($_POST['postal_code'])){
+        $postal_code = $_POST['postal_code'];
       } else {
         $postal_code = null;
       }
-      if(isset($_GET['country'])){
-        $country = $_GET['country'];
+      if(isset($_POST['country'])){
+        $country = $_POST['country'];
       } else {
         $country = null;
       }
-      if(isset($_GET['credit_limit'])){
-        $credit_limit = $_GET['credit_limit'];
+      if(isset($_POST['credit_limit'])){
+        $credit_limit = $_POST['credit_limit'];
       } else {
         $credit_limit = null;
       }
@@ -82,26 +82,45 @@
            die("Connection failed: " . $conn->connect_error);
       }
 
-      $sql = "INSERT INTO cliente (NOMBRE, APELLIDO_s, TELEFONO,
-      DIRECCION, CIUDAD, ESTADO, CODIGO_POSTAL, PAIS, LIMITE_CREDITO, email,
-      password) VALUES ('".$name."', '".$lastname."', '".$phone."', '".$address."', '".
-      $city."', '". $state."', '".$postal_code."', '".$country."', '".$credit_limit."', '"
-      .$email."', '".$password."')";
-      if(!empty($confirm_password) && !empty($password) && strcmp($confirm_password,$password)==0){
-        if(!empty($name) && !empty($lastname) && !empty($address) && !empty($city)
-        && !empty($country) && !empty($email)){
-  			  $result = $conn->query($sql);
+      if(!empty($login)){
+        $exists_sql = "SELECT * FROM cliente WHERE login='".$login."'";
+        $result = $conn->query($exists_sql);
+        $exists = 0;
+        if ($result->num_rows > 0) {
+              $exists = 1;
+        }
+
+
+        #if($exists == 1) {
+        if($exists==0)  {
+
+          $insert_sql = "INSERT INTO cliente (NOMBRE, APELLIDO_s, TELEFONO,
+          DIRECCION, CIUDAD, ESTADO, CODIGO_POSTAL, PAIS, LIMITE_CREDITO, LOGIN,
+          PASSWD) VALUES ('".$name."', '".$lastname."', '".$phone."', '".$address."', '".
+          $city."', '". $state."', '".$postal_code."', '".$country."', '".$credit_limit."', '"
+          .$login."', '".$password."')";
+          if(!empty($confirm_password) && !empty($password) && strcmp($confirm_password,$password)==0){
+            if(!empty($name) && !empty($lastname) && !empty($address) && !empty($city)
+            && !empty($country)){
+      			  $result = $conn->query($insert_sql);
+            } else {
+              echo "<p class="."result-message"."> Registry incorrect, please review
+              the mandatory fields </p>";
+            }
+          } else {
+            echo "<p class="."result-message".">passwords don't match </p>";
+          }
+          if(isset($result) && $result){
+            echo "<p class="."result-message"."> Registry correct </p>";
+          } else {
+            echo "<p class="."result-message"."> Registry incorrect </p>";
+          }
+        } else {
+          echo "<p class="."result-message"."> The login already exists </p>";
         }
       } else {
-        echo "<p class="."result-message".">passwords don't match </p>";
+        echo "<p class="."result-message"."> Enter login </p>";
       }
-      if(isset($result) && $result){
-        echo "<p class="."result-message"."> Registry correct </p>";
-      } else {
-        echo "<p class="."result-message"."> Registry incorrect, please review
-        the mandatory fields </p>";
-      }
-
       $conn->close();
     ?>
     <a href="index.php">

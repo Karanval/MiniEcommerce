@@ -11,9 +11,13 @@
     </header>
     <?php
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> badfa038f0eda936a6ffaa43a9ec284033070ff9
+=======
+
+>>>>>>> 9cc7873bb2b265ea1e3fc1a98c98761410c435a1
       if(isset($_GET['email'])){
         $email = $_GET['email'];
       } else{

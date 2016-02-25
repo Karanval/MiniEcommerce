@@ -26,7 +26,11 @@
       $username = "root";
       $db = "miniecommerce";
       // Create connection
+<<<<<<< HEAD
       $conn = new mysqli($servername, $username,"mysql", $db);
+=======
+      $conn = new mysqli($servername, $username, "", $db);
+>>>>>>> badfa038f0eda936a6ffaa43a9ec284033070ff9
       // Check connection
       if ($conn->connect_error) {
            die("Connection failed: " . $conn->connect_error);

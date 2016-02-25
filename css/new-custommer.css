@@ -50,5 +50,9 @@ body{
 .customer-login{
   margin: 5px 40%;}
 .cancel-link{
+<<<<<<< HEAD
   margin: 50px 40%;
+=======
+  margin: 5px 40%;
+>>>>>>> badfa038f0eda936a6ffaa43a9ec284033070ff9
 }

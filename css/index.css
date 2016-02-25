@@ -2,7 +2,13 @@ body{
     background-color: #BBBBDB;
     font-size: 16px;
 }
+<<<<<<< HEAD
 
+=======
+.customer-link{
+  margin: 0 0 0 90%;
+}
+>>>>>>> badfa038f0eda936a6ffaa43a9ec284033070ff9
 .title{
 		color: red;
 		font-size: 40px;

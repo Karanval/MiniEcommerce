@@ -24,7 +24,11 @@
 			$username = "root";
 			$db = "miniecommerce";
 			// Create connection
+<<<<<<< HEAD
 			$conn = new mysqli($servername, $username,"", $db);
+=======
+			$conn = new mysqli($servername, $username, "", $db);
+>>>>>>> badfa038f0eda936a6ffaa43a9ec284033070ff9
 			// Check connection
 			if ($conn->connect_error) {
 			     die("Connection failed: " . $conn->connect_error);
@@ -40,6 +44,7 @@
 			       $nombre = $row["NOMBRE"];
 			       $img_path = $row["IMG"];
 			       $precio = $row["PRECIO"];
+<<<<<<< HEAD
 			       echo "
 						 				<li class="."product".">
 							 				<a href="."product-detail.php?name="."$nombre"."&path="."$img_path"." class="."product-link".">
@@ -55,6 +60,21 @@
 													</div>
 							 			</li>
 									";
+=======
+			       echo "<li class="."product".">
+							 			<a href="."product.html"." class="."product-link".">
+							 				<img width="."200px"." height="."200px"." src=".$img_path." class="."product-img".">
+										<div clas="."product-texts".">
+											<p class="."product-name"." >
+							 					"."$nombre"."
+											</p>
+											<p class="."product-price"." >
+													Bs. ".  $precio."
+											</p>
+							 			</a>
+										</div>
+							 		</li>";
+>>>>>>> badfa038f0eda936a6ffaa43a9ec284033070ff9
 			     }
 			} else {
 			     echo "0 results";

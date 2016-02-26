@@ -33,7 +33,7 @@
       }
 
       if(!empty($login) && !empty($password)){
-        $sql = "SELECT LOGIN, PASSWD FROM cliente WHERE LOGIN='".$login."' AND PASSWD ='$password'";
+        $sql = "SELECT LOGIN, PASSWD FROM usuario WHERE LOGIN='".$login."' AND PASSWD ='$password'";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {

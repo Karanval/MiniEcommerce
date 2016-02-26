@@ -83,7 +83,7 @@
       }
 
       if(!empty($login)){
-        $exists_sql = "SELECT * FROM cliente WHERE login='".$login."'";
+        $exists_sql = "SELECT * FROM usuario WHERE login='".$login."'";
         $result = $conn->query($exists_sql);
         $exists = 0;
         if ($result->num_rows > 0) {
@@ -94,7 +94,7 @@
         #if($exists == 1) {
         if($exists==0)  {
 
-          $insert_sql = "INSERT INTO cliente (NOMBRE, APELLIDO_s, TELEFONO,
+          $insert_sql = "INSERT INTO usuario (NOMBRE, APELLIDO_s, TELEFONO,
           DIRECCION, CIUDAD, ESTADO, CODIGO_POSTAL, PAIS, LIMITE_CREDITO, LOGIN,
           PASSWD) VALUES ('".$name."', '".$lastname."', '".$phone."', '".$address."', '".
           $city."', '". $state."', '".$postal_code."', '".$country."', '".$credit_limit."', '"

@@ -10,7 +10,6 @@
       <h1 class="title">Registry confirmation</h1>
     </header>
     <?php
-
       if(isset($_POST['login'])){
         $login = $_POST['login'];
       } else {
@@ -71,7 +70,6 @@
       } else {
         $credit_limit = null;
       }
-
       $servername = "localhost";
       $username = "root";
       $db = "miniecommerce";
@@ -81,7 +79,6 @@
       if ($conn->connect_error) {
            die("Connection failed: " . $conn->connect_error);
       }
-
       if(!empty($login)){
         $exists_sql = "SELECT * FROM usuario WHERE login='".$login."'";
         $result = $conn->query($exists_sql);
@@ -89,11 +86,8 @@
         if ($result->num_rows > 0) {
               $exists = 1;
         }
-
-
         #if($exists == 1) {
         if($exists==0)  {
-
           $insert_sql = "INSERT INTO usuario (NOMBRE, APELLIDO_s, TELEFONO,
           DIRECCION, CIUDAD, ESTADO, CODIGO_POSTAL, PAIS, LIMITE_CREDITO, LOGIN,
           PASSWD) VALUES ('".$name."', '".$lastname."', '".$phone."', '".$address."', '".

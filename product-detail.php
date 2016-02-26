@@ -10,8 +10,14 @@
 
 	<body>
 		<header>
-			<h1 class="title">Mini Ecommerce</h1>
-
+			<div>
+					<?php
+					 	include ("add-login.php");
+					?>
+			</div>
+			<h1 class="title">
+					Mini e-commerce
+			</h1>
 		</header>
 		<?php
       if(isset($_GET['name'])){
@@ -31,15 +37,15 @@
       }
 
       //$sql = "INSERT INTO productos (NOMBRE,IMG,PRECIO,STOCK) VALUES ('".$name."', '".$path."', '".$cost."', '".$stock."')";
-			$sql = "SELECT * FROM productos WHERE NOMBRE = '".$name."'";
-      if(!empty($name)&& !empty($path)){
+			$sql = "SELECT * FROM PRODUCTOS WHERE NOMBRE = '".$name."'";
+      if(!empty($name)){
   			  $result = $conn->query($sql);
 					$row = $result->fetch_assoc();
 					$name = $row["NOMBRE"];
 					$path = $row["IMG"];
 					$cost = $row["PRECIO"];
 					$stock = $row["STOCK"];
-
+					$description = $row["DESCRIPCION"];
 
 					echo "  <center>
 					    <section
@@ -47,7 +53,7 @@
 					      <ul class = "."product-detail".">
 					            <li class = "."main-product".">
 					              <div class = "."marginProduct".">
-					                  <img width="."300px"." height="."300px"." src="."$path"." >
+					                  <img width="."300px"." height="."300px"." src='".$path."' >
 
 					              </div>
 					            </li >
@@ -64,6 +70,10 @@
 																	Stock :...."."$stock"."
 															</p>
 															<br>
+															<p class = "."product-name".">
+																	Description :...."."$description"."
+															</p>
+															<br>
 					                    <button class="."button1".">
 					                      Agregar al carrito
 					                    </button>
@@ -77,7 +87,7 @@
       }else{
 				echo "NO  DATA";
 			}
-			$sql = "SELECT * FROM productos ORDER BY RAND() LIMIT 3";
+			$sql = "SELECT * FROM PRODUCTOS ORDER BY RAND() LIMIT 3";
 			$result = $conn->query($sql);
 
 			echo "<center>
@@ -89,10 +99,11 @@
 			       $nombre = $row["NOMBRE"];
 			       $img_path = $row["IMG"];
 			       $precio = $row["PRECIO"];
+						 $nameImage = urlencode($row["NOMBRE"]);
 			       echo "
 						 				<li class="."product".">
-							 				<a href="."product-detail.php?name="."$nombre"."&path="."$img_path"." class="."product-link".">
-							 					<img width="."200px"." height="."200px"." src=".$img_path." class="."product-img".">
+							 				<a href="."product-detail.php?name="."$nameImage"." class="."product-link".">
+							 					<img width="."200px"." height="."200px"." src='".$img_path."' class="."product-img".">
 													<div clas="."product-texts".">
 													<p class="."product-name"." >
 							 							"."$nombre"."
@@ -115,12 +126,6 @@
       $conn->close();
     ?>
 		<center>
-						<a href= "add-customer-page.html">
-							<button class="button1">
-								LOGIN.
-							</button>
-						</a>
-
 						<a href= "index.php">
 							<button class="button1">
 								GO HOMEPAGE..

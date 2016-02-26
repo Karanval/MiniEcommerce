@@ -80,7 +80,7 @@
            die("Connection failed: " . $conn->connect_error);
       }
       if(!empty($login)){
-        $exists_sql = "SELECT * FROM usuario WHERE login='".$login."'";
+        $exists_sql = "SELECT * FROM USUARIO WHERE LOGIN='".$login."'";
         $result = $conn->query($exists_sql);
         $exists = 0;
         if ($result->num_rows > 0) {
@@ -109,7 +109,6 @@
           } else {
             echo "<p class="."result-message".">passwords don't match </p>";
           }
-
         } else {
           echo "<p class="."result-message"."> The login already exists </p>";
         }
@@ -122,4 +121,4 @@
       <button class="continue">Continue</button>
     </a>
   </body>
-</html>
+  </html>

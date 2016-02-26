@@ -76,7 +76,7 @@
 					if ($conn->connect_error) {
 							 die("Connection failed: ".$conn->connect_error);
 					}
-					$sql = "SELECT *  FROM productos WHERE NOMBRE='".$name."'";
+					$sql = "SELECT *  FROM PRODUCTOS WHERE NOMBRE='".$name."'";
 					$result = $conn->query($sql);
 					if ($result->num_rows > 0) {
 							$bproduct = false;
@@ -87,7 +87,7 @@
 							if ($conn->connect_error) {
 									 die("Connection failed: ".$conn->connect_error);
 							}
-							$sql = "INSERT INTO productos (NOMBRE,IMG,PRECIO,STOCK,DESCRIP) VALUES ('".$name."', '".$path."', '".$cost."', '".$stock."','".$description."')";
+							$sql = "INSERT INTO PRODUCTOS (NOMBRE,IMG,PRECIO,STOCK,DESCRIPCION) VALUES ('".$name."', '".$path."', '".$cost."', '".$stock."','".$description."')";
 							$conn->query($sql);
 							$conn->close();
 							move_uploaded_file($_FILES['file']["tmp_name"],$path);

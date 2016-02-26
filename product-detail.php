@@ -10,11 +10,14 @@
 
 	<body>
 		<header>
-			<?php
-				include ("add-user.php");
-			?>
-			<h1 class="title">Mini Ecommerce</h1>
-
+			<div>
+					<?php
+					 	include ("add-login.php");
+					?>
+			</div>
+			<h1 class="title">
+					Mini e-commerce
+			</h1>
 		</header>
 		<?php
       if(isset($_GET['name'])){
@@ -34,7 +37,7 @@
       }
 
       //$sql = "INSERT INTO productos (NOMBRE,IMG,PRECIO,STOCK) VALUES ('".$name."', '".$path."', '".$cost."', '".$stock."')";
-			$sql = "SELECT * FROM productos WHERE NOMBRE = '".$name."'";
+			$sql = "SELECT * FROM PRODUCTOS WHERE NOMBRE = '".$name."'";
       if(!empty($name)){
   			  $result = $conn->query($sql);
 					$row = $result->fetch_assoc();
@@ -42,7 +45,7 @@
 					$path = $row["IMG"];
 					$cost = $row["PRECIO"];
 					$stock = $row["STOCK"];
-					$description = $row["DESCRIP"];
+					$description = $row["DESCRIPCION"];
 
 					echo "  <center>
 					    <section
@@ -84,7 +87,7 @@
       }else{
 				echo "NO  DATA";
 			}
-			$sql = "SELECT * FROM productos ORDER BY RAND() LIMIT 3";
+			$sql = "SELECT * FROM PRODUCTOS ORDER BY RAND() LIMIT 3";
 			$result = $conn->query($sql);
 
 			echo "<center>
@@ -123,12 +126,6 @@
       $conn->close();
     ?>
 		<center>
-						<a href= "add-customer-page.html">
-							<button class="button1">
-								LOGIN.
-							</button>
-						</a>
-
 						<a href= "index.php">
 							<button class="button1">
 								GO HOMEPAGE..

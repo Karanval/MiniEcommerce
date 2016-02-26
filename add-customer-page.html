@@ -9,22 +9,14 @@
     <header>
       <h1 class="title">Mini Ecommerce</h1>
     </header>
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-
-=======
->>>>>>> badfa038f0eda936a6ffaa43a9ec284033070ff9
-=======
-
->>>>>>> 9cc7873bb2b265ea1e3fc1a98c98761410c435a1
     <section class="forms">
-      <form class="new-customer-form" action="add-customer-result.php">
+      <form class="new-customer-form" action="add-customer-result.php" method="post">
         <h2 class="form-title"> Signin </h2>
         <p class="form-especifications">The fields marked with * are mandatory</p>
         <fieldset class="customer-fieldset">
            <legend>Online information:</legend>
-           <input class="customer-data" type="text" name="email" placeholder="Please enter email">*<br>
+           <input class="customer-data" type="text" name="login" placeholder="Please enter login">*<br>
            <input class="customer-data" type="password" name="password" placeholder="Create password">*<br>
            <input class="customer-data" type="password" name="confirm-password" placeholder="Confirm password">*<br>
            <div class="registrationFormAlert">
@@ -51,10 +43,10 @@
       </form>
 
 
-      <form class="login-form" action="login-result.php">
+      <form class="login-form" action="login-result.php" method="post">
         <fieldset class="customer-fieldset">
           <h2 class="form-title"> Login </h2>
-           <input class="customer-data" type="text" name="email" placeholder="Please enter email"><br>
+           <input class="customer-data" type="text" name="login" placeholder="Please enter login"><br>
            <input class="customer-data" type="password" name="password" placeholder="Create password"><br>
         </fieldset>
         <input class="customer-login" type="submit" value="Login">

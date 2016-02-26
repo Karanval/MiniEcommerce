@@ -2,19 +2,9 @@ body{
     background-color: #BBBBDB;
     font-size: 16px;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
 .customer-link{
   margin: 0 0 0 90%;
 }
->>>>>>> badfa038f0eda936a6ffaa43a9ec284033070ff9
-=======
-.customer-link{
-  margin: 0 0 0 90%;
-}
->>>>>>> 9cc7873bb2b265ea1e3fc1a98c98761410c435a1
 .title{
 		color: red;
 		font-size: 40px;
@@ -76,4 +66,12 @@ body{
   text-decoration: underline;
   font-style: italic;
   background-color: inherit;;
+}
+.botom-logout{
+  margin: 20px;
+}
+.login{
+  text-decoration: none;
+	display: inline-block;
+  margin: 10px;
 }

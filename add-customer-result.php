@@ -97,6 +97,11 @@
             if(!empty($name) && !empty($lastname) && !empty($address) && !empty($city)
             && !empty($country)){
       			  $result = $conn->query($insert_sql);
+              if(isset($result) && $result){
+                echo "<p class="."result-message"."> Registry correct </p>";
+              } else {
+                echo "<p class="."result-message"."> Registry incorrect </p>";
+              }
             } else {
               echo "<p class="."result-message"."> Registry incorrect, please review
               the mandatory fields </p>";
@@ -104,11 +109,7 @@
           } else {
             echo "<p class="."result-message".">passwords don't match </p>";
           }
-          if(isset($result) && $result){
-            echo "<p class="."result-message"."> Registry correct </p>";
-          } else {
-            echo "<p class="."result-message"."> Registry incorrect </p>";
-          }
+
         } else {
           echo "<p class="."result-message"."> The login already exists </p>";
         }

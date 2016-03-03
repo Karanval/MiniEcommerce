@@ -80,7 +80,7 @@
            die("Connection failed: " . $conn->connect_error);
       }
       if(!empty($login)){
-        $exists_sql = "SELECT * FROM usuario WHERE login='".$login."'";
+        $exists_sql = "SELECT * FROM USUARIO WHERE LOGIN='".$login."'";
         $result = $conn->query($exists_sql);
         $exists = 0;
         if ($result->num_rows > 0) {
@@ -88,7 +88,7 @@
         }
         #if($exists == 1) {
         if($exists==0)  {
-          $insert_sql = "INSERT INTO usuario (NOMBRE, APELLIDO_s, TELEFONO,
+          $insert_sql = "INSERT INTO USUARIO (NOMBRE, APELLIDO_s, TELEFONO,
           DIRECCION, CIUDAD, ESTADO, CODIGO_POSTAL, PAIS, LIMITE_CREDITO, LOGIN,
           PASSWD) VALUES ('".$name."', '".$lastname."', '".$phone."', '".$address."', '".
           $city."', '". $state."', '".$postal_code."', '".$country."', '".$credit_limit."', '"
@@ -97,11 +97,6 @@
             if(!empty($name) && !empty($lastname) && !empty($address) && !empty($city)
             && !empty($country)){
       			  $result = $conn->query($insert_sql);
-              if(isset($result) && $result){
-                echo "<p class="."result-message"."> Registry correct </p>";
-              } else {
-                echo "<p class="."result-message"."> Registry incorrect </p>";
-              }
             } else {
               echo "<p class="."result-message"."> Registry incorrect, please review
               the mandatory fields </p>";
@@ -109,7 +104,11 @@
           } else {
             echo "<p class="."result-message".">passwords don't match </p>";
           }
-
+          if(isset($result) && $result){
+            echo "<p class="."result-message"."> Registry correct </p>";
+          } else {
+            echo "<p class="."result-message"."> Registry incorrect </p>";
+          }
         } else {
           echo "<p class="."result-message"."> The login already exists </p>";
         }
@@ -122,4 +121,4 @@
       <button class="continue">Continue</button>
     </a>
   </body>
-</html>
+  </html>

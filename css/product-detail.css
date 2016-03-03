@@ -69,10 +69,11 @@ body{
   width: 140px;
   height: 30px;
   margin: 10px;
-
-
 }
 .marginProduct{
   padding: 10px;
   border: transparent: 10px;
+}
+.customer-link{
+  margin: 0 0 0 90%;
 }

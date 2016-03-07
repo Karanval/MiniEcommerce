@@ -13,66 +13,91 @@
 			<h1 class="title">Mini Ecommerce</h1>
 
 		</header>
+    <center>
+		<h3 class = "form-title" >REMOVE  PRODUCT</h3>
+
+    <section class="products-section">
+      <ul class="products-list">
 		<?php
 
-				$bname = false;
 
-				if(isset($_POST['name'])){
-					$name = $_POST['name'];
-					if(!empty($name)){
-						$bname = true;
+        $servername = "localhost";
+        $username = "root";
+        $db = "miniecommerce";
+        // Create connection
+        $conn = new mysqli($servername, $username, "", $db);
+        // Check connection
+        if ($conn->connect_error) {
+          die("Connection failed: " . $conn->connect_error);
+        }
+
+        //$pagina = 3;//para los indices
+        $sql = "SELECT NOMBRE, IMG, PRECIO FROM PRODUCTOS WHERE ACTIVO=1 ";
+        $result = $conn->query($sql);
+
+          $products = count($_POST);
+          $array = array_keys($_POST); // obtiene los nombres de las varibles
+          $array_values = array_values($_POST);// obtiene los valores de las varibles
+					if($products>=1){
+          for($i=0;$i<$products;$i++){
+              $array[$i]=$array_values[$i];
+              $sql = "SELECT * FROM PRODUCTOS WHERE ACTIVO=1 AND NOMBRE='".$array[$i]."'";
+              $result = $conn->query($sql);
+
+              if ($result->num_rows > 0) {
+                   // output data of each row
+                     $row = $result->fetch_assoc();
+                     $name = ($row["NOMBRE"]);
+                     $img_path = $row["IMG"];
+                     $cost = $row["PRECIO"];
+      							 $real_name = urlencode($row["NOMBRE"]);
+                     echo "
+                     <li class="."product".">
+                         <img width="."100px"." height="."100px"." src='".$img_path."' class="."product-img".">
+                           <div clas="."product-texts".">
+                             <p class="."product-name"." >
+                               "."$name"."
+                             </p><br>
+                             <p class="."product-price"." >
+                               Bs. ".$cost."
+                             </p>
+                           </div>
+                     </li>";
+                 }
+            }
+						echo "	</ul>
+										</section >
+
+										<form class = "."new-product-form"." action="."remove-product-end.php"." method="."get"." enctype="."multipart/form-data".">";
+
+										foreach ($array_values as $value){
+												echo "<input type="."hidden"." name="."result[]"." value=".urlencode($value).">";
+										}
+						echo "<input class= "."product-submit"." type = "."submit"." value="."REMOVE".">";
+
+						echo "</form>
+									</center>";
+					}else{
+						echo "Noting to delete now !!!!!!<br>";
+						echo "<center>
+										<a href= "."remove-product.php".">
+											<button class="."button1".">
+													TRY AGAIN.
+											</button>
+										</a>
+										<br>
+										<a href= "."index.php".">
+											<button class="."button1".">
+												GO HOMEPAGE.
+											</button>
+										</a>
+									</center>
+									</ul>
+							    </section >
+
+							    </center>
+									";
 					}
-				} else{
-					$name = null;
-				}
-
-				if($bname){
-					//VERIFY IN TH DB IF EXISTS SAME PRODUCT..
-					$conn = new mysqli("localhost","root", "","miniecommerce");
-					if ($conn->connect_error) {
-							 die("Connection failed: ".$conn->connect_error);
-					}
-
-					$sql = "SELECT *  FROM PRODUCTOS WHERE NOMBRE='".$name."'";
-					$result = $conn->query($sql);
-
-					if ($result->num_rows == 0) {
-							$bproduct = false;
-							echo "<center>THE PRODUCT NOT EXISTS!!! </center><br>";
-					} else {//INSERT THE PRODUCT IN THE DATA BASE....
-							$conn = new mysqli("localhost","root", "","miniecommerce");
-							if ($conn->connect_error) {
-									 die("Connection failed: ".$conn->connect_error);
-							}
-							$sql = "DELETE FROM PRODUCTOS  WHERE  NOMBRE ='".$name."'";
-							$conn->query($sql);
-							$conn->close();
-
-							echo "<center>
-											<h2> PRODUCT REMOVED </h2	>
-									 </center>";
-
-					}
-					//$conn->close();
-				}else{
-					if($bname == false){
-						echo "<center>ERROR NAME!!!<br></center>";
-					}
-				}
-				echo "<center>
-								<a href= "."remove-product.html".">
-									<button class="."button1".">
-											TRY AGAIN.
-									</button>
-								</a>
-								<br>
-								<a href= "."index.php".">
-									<button class="."button1".">
-										GO HOMEPAGE.
-									</button>
-								</a>
-							</center>";
     ?>
-
 	</body>
 </html>

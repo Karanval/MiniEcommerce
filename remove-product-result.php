@@ -18,27 +18,22 @@
 
     <section class="products-section">
       <ul class="products-list">
+			<form  action="remove-product-end.php" method="post" enctype="multipart/form-data">
 		<?php
 
 
         $servername = "localhost";
         $username = "root";
         $db = "miniecommerce";
-        // Create connection
         $conn = new mysqli($servername, $username, "", $db);
-        // Check connection
         if ($conn->connect_error) {
           die("Connection failed: " . $conn->connect_error);
         }
-
-        //$pagina = 3;//para los indices
-        $sql = "SELECT NOMBRE, IMG, PRECIO FROM PRODUCTOS WHERE ACTIVO=1 ";
-        $result = $conn->query($sql);
-
           $products = count($_POST);
           $array = array_keys($_POST); // obtiene los nombres de las varibles
           $array_values = array_values($_POST);// obtiene los valores de las varibles
 					if($products>=1){
+
           for($i=0;$i<$products;$i++){
               $array[$i]=$array_values[$i];
               $sql = "SELECT * FROM PRODUCTOS WHERE ACTIVO=1 AND NOMBRE='".$array[$i]."'";
@@ -53,6 +48,7 @@
       							 $real_name = urlencode($row["NOMBRE"]);
                      echo "
                      <li class="."product".">
+										 		 <input type="."hidden"." name=".$i." value=".$real_name.">
                          <img width="."100px"." height="."100px"." src='".$img_path."' class="."product-img".">
                            <div clas="."product-texts".">
                              <p class="."product-name"." >
@@ -66,20 +62,15 @@
                  }
             }
 						echo "	</ul>
-										</section >
+										</section >";
 
-										<form class = "."new-product-form"." action="."remove-product-end.php"." method="."get"." enctype="."multipart/form-data".">";
-
-										foreach ($array_values as $value){
-												echo "<input type="."hidden"." name="."result[]"." value=".urlencode($value).">";
-										}
 						echo "<input class= "."product-submit"." type = "."submit"." value="."REMOVE".">";
-
 						echo "</form>
 									</center>";
 					}else{
 						echo "Noting to delete now !!!!!!<br>";
-						echo "<center>
+						echo "	</ul>
+										</section >
 										<a href= "."remove-product.php".">
 											<button class="."button1".">
 													TRY AGAIN.
@@ -91,13 +82,10 @@
 												GO HOMEPAGE.
 											</button>
 										</a>
-									</center>
-									</ul>
-							    </section >
-
 							    </center>
 									";
 					}
+					$conn->close();
     ?>
 	</body>
 </html>

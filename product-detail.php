@@ -10,10 +10,13 @@
 
 	<body>
 		<header>
-			<div>
-					<?php
-					 	include ("add-login.php");
-					?>
+			<div class="right-side">
+				<a class="cart-link" href="index.php">
+          <img width="30px" height="30px" src="images/cart.png" class="icono-carrito">
+     		</a>
+				<?php
+				 	include ("php/add-login.php");
+				?>
 			</div>
 			<h1 class="title">
 					Mini e-commerce
@@ -48,41 +51,37 @@
 					$description = $row["DESCRIPCION"];
 
 					echo "  <center>
-					    <section
-							class="."principal-product".">
-					      <ul class = "."product-detail".">
-					            <li class = "."main-product".">
-					              <div class = "."marginProduct".">
-					                  <img width="."300px"." height="."300px"." src='".$path."' >
+				    <section class="."principal-product".">
+				      <ul class = "."product-details".">
+		            <li class = "."main-product".">
+		              <div class = "."marginProduct".">
+		                  <img width="."300px"." height="."300px"." src='".$path."' >
 
-					              </div>
-					            </li >
+		              </div>
+		            </li >
 
-					            <li class = "."main-product".">
-													<center>
-															<h1 class="."product-name"."> "."$name"," </h1>
-															<br>
-															<p class = "."product-name".">
-																	Cost :....$ "."$cost"."
-															</p>
-															<br>
-															<p class = "."product-name".">
-																	Stock :...."."$stock"."
-															</p>
-															<br>
-															<p class = "."product-name".">
-																	Description :...."."$description"."
-															</p>
-															<br>
-					                    <button class="."button1".">
-					                      Agregar al carrito
-					                    </button>
-															<br><br>
-													</center>
-					            </li>
-					      </ul>
-					    </section>
-					    </center>";
+		            <li class = "."main-product".">
+										<center>
+												<h1 class="."product-detail"."> "."$name"," </h1>
+												<br>
+												<p class = "."product-detail".">Cost : Bs. "."$cost"."</p>
+												<br>
+												<p class = "."product-detail".">Stock : "."$stock"."	</p>
+												<br>";
+					if(isset($description)){
+						echo "<p class = "."product-detail".">Description : "."$description"."</p>
+						<br>";
+					}
+					if(isset($_SESSION["user"]) ){
+						echo" <button class="."add_to_cart"." type="."button"." onclick="."addToCart(".$name.", ".$_SESSION["user"].")".">
+						Agregar al carrito</button>";
+					}
+										echo"		<br><br>
+										</center>
+		            </li>
+		      		</ul>
+				    </section>
+				    </center>";
 
       }else{
 				echo "NO  DATA";
@@ -125,12 +124,9 @@
 						</center>";
       $conn->close();
     ?>
-		<center>
-						<a href= "index.php">
-							<button class="button1">
-								GO HOMEPAGE..
-							</button>
-						</a>
-		</center>
+		<a class="home-link" href= "index.php">
+			<button class="home-button">Home</button>
+		</a>
+		<script src="cart.js"></script>
 	</body>
 </html>

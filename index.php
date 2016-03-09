@@ -10,9 +10,12 @@
 </head>
 <body>
 	<header>
-		<div >
+		<div class="right-side">
+			  <a class="cart-link" href="index.php">
+          <img width="30px" height="30px" src="images/cart.png" class="icono-carrito">
+     		</a>
 				<?php
-				 	include ("add-login.php");
+				 	include ("php/add-login.php");
 				?>
 		</div>
 		<h1 class="title">
@@ -21,46 +24,7 @@
 	</header>
 	<center>
 		<?php
-
-		$servername = "localhost";
-		$username = "root";
-		$db = "miniecommerce";
-		// Create connection
-		$conn = new mysqli($servername, $username, "", $db);
-		// Check connection
-		if ($conn->connect_error) {
-				 die("Connection failed: " . $conn->connect_error);
-		}
-
-		#session_start();
-		if (isset($_SESSION["user"])){
-			$user = $_SESSION["user"];
-		}
-		if(isset($user)){
-			$sql_rol = "SELECT r.nombre_rol from usuario u, usr_rol ur, rol r where
-			 u.login = '".$user."' AND u.login = ur.login AND ur.id_rol = r.id_rol";
-			 $result = $conn->query($sql_rol);
-			 if ($result->num_rows > 0) {
-				 $row= $result->fetch_assoc();
-				 $rol = $row["nombre_rol"];
-				 echo "rol: ".$rol."<br>";
-				 if($rol == "administrador"){
-					 echo "menu administrador <br>";
-					 $sql_perm = "SELECT p.nombre from rol r, rol_perm rp, permisos p where
-						r.nombre_rol = '".$rol."' AND r.ID_ROL = rp.ID_ROL AND p.ID_PERM = rp.ID_PERM";
-						$result = $conn->query($sql_perm);
-						if ($result->num_rows > 0) {
-							echo "permiso(s): ";
-							while($row = $result->fetch_assoc()) {
-								#echo $row["nombre"]. "<br>";
-								if($row["nombre"]=="agregarProducto"){
-									echo "<a href="."add-product.html".">add product</a>";
-								}
-							}
-						}
-				 }
-			 }
-		 }
+			include ("php/verify-roles.php");
 		?>
 	<section class="products-section">
 		<ul class="products-list">
@@ -125,21 +89,8 @@
 	<section class="index-section">
 		<form class="index" action="index.php">
 			<?php
-				$servername = "localhost";
-				$username = "root";
-				$db = "miniecommerce";
-				$conn = new mysqli($servername, $username, "", $db);
-				if ($conn->connect_error) {
-						 echo "Connection failed: " . $conn->connect_error;
-				}
-				$sql = "SELECT * FROM PRODUCTOS";
-				$result = $conn->query($sql);
-
-				$cont = ceil(($result->num_rows) / 9);
-				for ($i=1; $i <= $cont; $i++) {
-					echo "<input class="."index-item"." type="."submit"." name="."pagina"." value=".$i.">";
-				}
-			?>
+				include("php/paginacion.php");
+			 ?>
 		</form>
 	</section>
 

@@ -127,6 +127,20 @@
 		<a class="home-link" href= "index.php">
 			<button class="home-button">Home</button>
 		</a>
-		<script src="cart.js"></script>
+		<script>
+		function addToCart() {
+			alert("entrrra");
+			<?php
+				$conn = new mysqli("localhost","root", "","miniecommerce");
+				if ($conn->connect_error) {
+						 die("Connection failed: ".$conn->connect_error);
+				}
+				$sql = "INSERT into carrito (login, nom_prod) values ('".login."', '".nomPro."')";
+				$result = $conn->query($sql);
+
+				$conn->close();
+			 ?>
+		}
+		</script>
 	</body>
 </html>

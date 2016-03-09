@@ -10,7 +10,7 @@
 <body>
 	<header>
 		 <?php
-		 	include ("add-login.php");
+		 	include ("php/add-login.php");
 		 ?>
 		<h1 class="title">
 				Minie-commerce

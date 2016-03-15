@@ -14,12 +14,11 @@
 
 		</header>
     <center>
-		<h3 class = "form-title" >REMOVE  PRODUCT</h3>
+		<h3 class = "form-title" >  REMOVE  PRODUCT</h3>
+
+		<h2 class = "form-title">   This products are deleted!!!</h2>
 
     <section class="products-section">
-      <ul class="products-list">
-
-
 		<?php
 			$products = count($_POST);
 			$array = array_keys($_POST); // obtiene los nombres de las varibles
@@ -32,6 +31,7 @@
 				die("Connection failed: " . $conn->connect_error);
 			}
 			if($products>=1){
+				echo "<ul class="."products-list".">";
 				for($i=0;$i<$products;$i++){
 					$array[$i]=urldecode($array_values[$i]);
 					$sql = "SELECT * FROM PRODUCTOS WHERE ACTIVO=1 AND NOMBRE='".$array[$i]."'";
@@ -63,17 +63,17 @@
     ?>
 	</ul>
 	</section>
-					<a href= "remove-product.php">
-						<button class=button1>
-								TRY AGAIN.
-						</button>
-					</a>
-					<br>
-					<a href= index.php>
-						<button class="button1">
-							GO HOMEPAGE.
-						</button>
-					</a>
+						<a href= "remove-product.php">
+							<button class=button1>
+									TRY AGAIN.
+							</button>
+						</a>
+						<br>
+						<a href= index.php>
+							<button class="button1">
+								GO HOMEPAGE.
+							</button>
+						</a>
 	</center>
 	</body>
 </html>

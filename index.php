@@ -18,7 +18,11 @@
 		<h1 class="title">
 				Mini e-commerce
 		</h1>
+		<?
+			include ("search-product.html");
+		?>
 	</header>
+
 	<center>
 	<section class="products-section">
 		<ul class="products-list">
@@ -42,8 +46,7 @@
 			     die("Connection failed: " . $conn->connect_error);
 			}
 
-			//$pagina = 3;//para los indices
-			$sql = "SELECT NOMBRE, IMG, PRECIO FROM PRODUCTOS LIMIT 9 OFFSET $pagina";
+			$sql = "SELECT NOMBRE, IMG, PRECIO FROM PRODUCTOS WHERE ACTIVO=1 LIMIT 9 OFFSET $pagina";
 			$result = $conn->query($sql);
 
 			if ($result->num_rows > 0) {
@@ -76,7 +79,6 @@
 
 			$conn->close();
 			?>
-
 		</ul>
 	</section >
   </center>
@@ -90,10 +92,10 @@
 				if ($conn->connect_error) {
 						 echo "Connection failed: " . $conn->connect_error;
 				}
-				$sql = "SELECT * FROM PRODUCTOS";
+				$sql = "SELECT NOMBRE FROM PRODUCTOS WHERE ACTIVO =1";
 				$result = $conn->query($sql);
 
-				$cont = round(($result->num_rows) / 9);
+				$cont = ceil(($result->num_rows) / 9);
 				for ($i=1; $i <= $cont; $i++) {
 					echo "<input class="."index-item"." type="."submit"." name="."pagina"." value=".$i.">";
 				}

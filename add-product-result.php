@@ -22,7 +22,6 @@
 				$bstock = false;
 				$bproduct = false;
 
-
 				if ((	($_FILES['file']["type"] == "image/gif") ||
 					 ($_FILES['file']["type"] == "image/jpeg") ||
 					 ($_FILES['file']["type"] == "image/png") ||
@@ -79,7 +78,6 @@
 					$stock = null;
 				}
 
-
 				if($bimage && $bname && $bcost && $bdescription && $bstock){
 					//VERIFY IN TH DB IF EXISTS SAME PRODUCT..
 					$conn = new mysqli("localhost","root", "","miniecommerce");
@@ -117,15 +115,15 @@
 													<img width="."200px"." height="."200px"." src="."$path".">
 												</li>
 												<li class = "."product".">
-													<p class ="."par"."> Name :......."."$name"."</p>
+													<p class ="."par"."> Name :       "."$name"."</p>
 													<br>
-													<p class ="."par"."> Cost :......."."$cost"."</p>
+													<p class ="."par"."> Cost :       "."$cost"."</p>
 													<br>
-													<p class ="."par"."> file :......."."$path"."</p>
+													<p class ="."par"."> file :       "."$path"."</p>
 													<br>
-													<p class ="."par"."> Description :......."."$description"."</p>
+													<p class ="."par"."> Description :       "."$description"."</p>
 													<br>
-													<p class ="."par"."> Stock :......."."$stock"."</p>
+													<p class ="."par"."> Stock :       "."$stock"."</p>
 												</li>
 											</ul>
 											</section>

@@ -7,21 +7,17 @@
 		Home
 	</title>
 	</head>
-
 	<body>
-
 		<header>
 			<h1 class="title">Mini Ecommerce</h1>
-
 		</header>
-
     <center>
 		<h3 class = "form-title" >REMOVE  PRODUCT</h3>
 		<form class = ".new-product-form" action="remove-product-result.php" method="post" enctype="multipart/form-data">
     <section class="products-section">
       <ul class="products-list">
         <?php
-
+				include ("functions.php");
         if(isset($_GET['pagina']) && $_GET['pagina']!=1){
           $pagina = 0;
           for ($i=1; $i <$_GET['pagina'] ; $i++) {
@@ -30,16 +26,7 @@
         } else {
           $pagina = 1;
         }
-        $servername = "localhost";
-        $username = "root";
-        $db = "miniecommerce";
-        // Create connection
-        $conn = new mysqli($servername, $username, "", $db);
-        // Check connection
-        if ($conn->connect_error) {
-             die("Connection failed: " . $conn->connect_error);
-        }
-
+        include("data-base-conexion.php");
         //$pagina = 3;//para los indices
         $sql = "SELECT NOMBRE, IMG, PRECIO FROM PRODUCTOS WHERE ACTIVO=1 ";
         $result = $conn->query($sql);
@@ -53,22 +40,8 @@
                $cost = $row["PRECIO"];
 							 $real_name = urlencode($row["NOMBRE"]);
 							 $pname = "product".$count;
-               echo "
-                      <li class="."product".">
-
-                          <img width="."100px"." height="."100px"." src='".$img_path."' class="."product-img".">
-                            <div clas="."product-texts".">
-                            	<p class="."product-name"." >
-                              	"."$name"."
-                            	</p><br>
-                            	<p class="."product-price"." >
-                              	Bs. ".$cost."
-                            	</p><br>
-															<input type="."checkbox"." name= '".$pname."' value='".$name."'> Delete<br>
-                            </div>
-                      </li>
-                    ";
-								$count++;
+							 echo fun_show_product_remove2($name,$img_path,$cost,$pname);
+							 $count++;
              }
         } else {
              echo "0 results";

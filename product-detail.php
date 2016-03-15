@@ -18,8 +18,14 @@
 			<h1 class="title">
 					Mini e-commerce
 			</h1>
+			<?
+				include ("search-product.html");
+			?>
 		</header>
+
 		<?php
+			include("functions.php");
+
       if(isset($_GET['name'])){
         $name = $_GET['name'];
       } else{
@@ -31,12 +37,8 @@
         $path = null;
       }
 
-      $conn = new mysqli("localhost","root", "","miniecommerce");
-      if ($conn->connect_error) {
-           die("Connection failed: ".$conn->connect_error);
-      }
+      include("data-base-conexion.php");
 
-      //$sql = "INSERT INTO productos (NOMBRE,IMG,PRECIO,STOCK) VALUES ('".$name."', '".$path."', '".$cost."', '".$stock."')";
 			$sql = "SELECT * FROM PRODUCTOS WHERE NOMBRE = '".$name."'";
       if(!empty($name)){
   			  $result = $conn->query($sql);
@@ -47,43 +49,7 @@
 					$stock = $row["STOCK"];
 					$description = $row["DESCRIPCION"];
 
-					echo "  <center>
-					    <section
-							class="."principal-product".">
-					      <ul class = "."product-detail".">
-					            <li class = "."main-product".">
-					              <div class = "."marginProduct".">
-					                  <img width="."300px"." height="."300px"." src='".$path."' >
-
-					              </div>
-					            </li >
-
-					            <li class = "."main-product".">
-													<center>
-															<h1 class="."product-name"."> "."$name"," </h1>
-															<br>
-															<p class = "."product-name".">
-																	Cost :....$ "."$cost"."
-															</p>
-															<br>
-															<p class = "."product-name".">
-																	Stock :...."."$stock"."
-															</p>
-															<br>
-															<p class = "."product-name".">
-																	Description :...."."$description"."
-															</p>
-															<br>
-					                    <button class="."button1".">
-					                      Agregar al carrito
-					                    </button>
-															<br><br>
-													</center>
-					            </li>
-					      </ul>
-					    </section>
-					    </center>";
-
+					echo fun_show_main_product($name,$path, $cost,$stock,$description);
       }else{
 				echo "NO  DATA";
 			}
@@ -96,25 +62,11 @@
 			if ($result->num_rows > 0) {
 			     // output data of each row
 			     while($row = $result->fetch_assoc()) {
-			       $nombre = $row["NOMBRE"];
+			       $name = $row["NOMBRE"];
 			       $img_path = $row["IMG"];
-			       $precio = $row["PRECIO"];
+			       $cost = $row["PRECIO"];
 						 $nameImage = urlencode($row["NOMBRE"]);
-			       echo "
-						 				<li class="."product".">
-							 				<a href="."product-detail.php?name="."$nameImage"." class="."product-link".">
-							 					<img width="."200px"." height="."200px"." src='".$img_path."' class="."product-img".">
-													<div clas="."product-texts".">
-													<p class="."product-name"." >
-							 							"."$nombre"."
-													</p>
-													<p class="."product-price"." >
-														Bs. ".  $precio."
-													</p>
-							 				</a>
-													</div>
-							 			</li>
-									";
+			       echo fun_show_product($name, $img_path,$cost,$nameImage);
 			     }
 			} else {
 			     echo "NO DATA...";

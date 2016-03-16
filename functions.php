@@ -17,9 +17,6 @@
               </li>
             ";
       return $chain;
-
-
-
      }
 
      function fun_show_main_product($name,$path, $cost,$stock,$description){

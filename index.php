@@ -21,7 +21,7 @@
 		<h1 class="title">
 				Mini e-commerce
 		</h1>
-		<?
+		<?php
 			include ("search-product.html");
 		?>
 	</header>

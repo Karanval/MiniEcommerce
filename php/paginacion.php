@@ -6,7 +6,7 @@
   if ($conn->connect_error) {
        echo "Connection failed: " . $conn->connect_error;
   }
-  $sql = "SELECT * FROM PRODUCTOS";
+  $sql = "SELECT * FROM PRODUCTOS where activo=1";
   $result = $conn->query($sql);
 
   $cont = ceil(($result->num_rows) / 9);

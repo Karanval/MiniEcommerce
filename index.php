@@ -10,9 +10,12 @@
 </head>
 <body>
 	<header>
-		<div >
+		<div class="right-side">
+			  <a class="cart-link" href="cart.php">
+          <img width="30px" height="30px" src="images/cart.png" class="icono-carrito">
+     		</a>
 				<?php
-				 	include ("add-login.php");
+				 	include ("php/add-login.php");
 				?>
 		</div>
 		<h1 class="title">
@@ -24,6 +27,9 @@
 	</header>
 
 	<center>
+		<?php
+			include ("php/verify-roles.php");
+		?>
 	<section class="products-section">
 		<ul class="products-list">
 			<?php
@@ -59,15 +65,8 @@
 	<section class="index-section">
 		<form class="index" action="index.php">
 			<?php
-				include ("data-base-conexion.php");
-				$sql = "SELECT NOMBRE FROM PRODUCTOS WHERE ACTIVO =1";
-				$result = $conn->query($sql);
-
-				$cont = ceil(($result->num_rows) / 9);
-				for ($i=1; $i <= $cont; $i++) {
-					echo "<input class="."index-item"." type="."submit"." name="."pagina"." value=".$i.">";
-				}
-			?>
+				include("php/paginacion.php");
+			 ?>
 		</form>
 	</section>
 

@@ -30,7 +30,7 @@
 				}
 				$conn->close();
 		 		session_destroy();
-		   	include ("add-login.php");
+		   	include ("php/add-login.php");
 		 ?>
 		<h1 class="title">
 				Minie-commerce

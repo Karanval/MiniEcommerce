@@ -23,7 +23,7 @@
 			</h1>
 		</header>
 		<div id="txtHint"></div>
-			<<?php include ("php/add-to-cart.php"); ?>
+			<?php include ("php/add-to-cart.php"); ?>
 		<?php
       if(isset($_GET['name'])){
         $name = $_GET['name'];

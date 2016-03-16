@@ -73,3 +73,17 @@ body{
 	width:  240px;
 	height: 250px;
 }
+.liblock{
+  display: inline-block;
+}
+.index-section{
+  text-align: center;
+}
+.index{}
+.index-item[type="submit"]{
+  border: none;
+  color: #0000ff;
+  text-decoration: underline;
+  font-style: italic;
+  background-color: inherit;;
+}

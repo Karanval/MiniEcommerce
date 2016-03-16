@@ -2,14 +2,8 @@ body{
     background-color: #BBBBDB;
     font-size: 16px;
 }
-.right-side{
-  margin: 0 0 0 90%;
-}
-.cart-link{
-  text-decoration: none;
-}
 .customer-link{
-  text-decoration: none;
+  margin: 0 0 0 90%;
 }
 .title{
 		color: red;
@@ -42,6 +36,7 @@ body{
   margin: 0 auto;
 }
 .product-texts{
+
 }
 .product-name{
   color: #000000;

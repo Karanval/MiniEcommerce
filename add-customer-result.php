@@ -70,15 +70,7 @@
       } else {
         $credit_limit = null;
       }
-      $servername = "localhost";
-      $username = "root";
-      $db = "miniecommerce";
-      // Create connection
-      $conn = new mysqli($servername, $username, "", $db);
-      // Check connection
-      if ($conn->connect_error) {
-           die("Connection failed: " . $conn->connect_error);
-      }
+      include("data-base-conexion.php");
       if(!empty($login)){
         $exists_sql = "SELECT * FROM USUARIO WHERE LOGIN='".$login."'";
         $result = $conn->query($exists_sql);

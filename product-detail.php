@@ -10,21 +10,22 @@
 
 	<body>
 		<header>
-			<div class="right-side">
-				<a class="cart-link" href="cart.php">
-          <img width="30px" height="30px" src="images/cart.png" class="icono-carrito">
-     		</a>
-				<?php
-				 	include ("php/add-login.php");
-				?>
+			<div>
+					<?php
+					 	include ("add-login.php");
+					?>
 			</div>
 			<h1 class="title">
 					Mini e-commerce
 			</h1>
+			<?
+				include ("search-product.html");
+			?>
 		</header>
-		<div id="txtHint"></div>
-			<?php include ("php/add-to-cart.php"); ?>
+
 		<?php
+			include("functions.php");
+
       if(isset($_GET['name'])){
         $name = $_GET['name'];
       } else{
@@ -36,12 +37,8 @@
         $path = null;
       }
 
-      $conn = new mysqli("localhost","root", "","miniecommerce");
-      if ($conn->connect_error) {
-           die("Connection failed: ".$conn->connect_error);
-      }
+      include("data-base-conexion.php");
 
-      //$sql = "INSERT INTO productos (NOMBRE,IMG,PRECIO,STOCK) VALUES ('".$name."', '".$path."', '".$cost."', '".$stock."')";
 			$sql = "SELECT * FROM PRODUCTOS WHERE NOMBRE = '".$name."'";
       if(!empty($name)){
   			  $result = $conn->query($sql);
@@ -52,43 +49,7 @@
 					$stock = $row["STOCK"];
 					$description = $row["DESCRIPCION"];
 
-					echo "  <center>
-				    <section class="."principal-product".">
-				      <ul class = "."product-details".">
-		            <li class = "."main-product".">
-		              <div class = "."marginProduct".">
-		                  <img width="."300px"." height="."300px"." src='".$path."' >
-
-		              </div>
-		            </li >
-
-		            <li class = "."main-product".">
-										<center>
-												<h1 class="."product-detail"."> "."$name"," </h1>
-												<br>
-												<p class = "."product-detail".">Cost : Bs. "."$cost"."</p>
-												<br>
-												<p class = "."product-detail".">Stock : "."$stock"."	</p>
-												<br>";
-					if(isset($description)){
-						echo "<p class = "."product-detail".">Description : "."$description"."</p>
-						<br>";
-					}
-					if(isset($_SESSION["user"]) ){
-						$login = $_SESSION["user"];
-						$func ="addToCart(".$name.", ".$login.")";
-						echo "<a href="."product-detail.php?name=".$name."&login=".$login.">";
-						#echo "<button class=add_to_cart type=button onclick =addToCart('".$name."','".$login."')>Agregar al carrito</button>";
-						echo "<button class=add_to_cart>Agregar al carrito</button>";
-						echo "</a>";
-					}
-										echo"		<br><br>
-										</center>
-		            </li>
-		      		</ul>
-				    </section>
-				    </center>";
-
+					echo fun_show_main_product($name,$path, $cost,$stock,$description);
       }else{
 				echo "NO  DATA";
 			}
@@ -101,25 +62,11 @@
 			if ($result->num_rows > 0) {
 			     // output data of each row
 			     while($row = $result->fetch_assoc()) {
-			       $nombre = $row["NOMBRE"];
+			       $name = $row["NOMBRE"];
 			       $img_path = $row["IMG"];
-			       $precio = $row["PRECIO"];
+			       $cost = $row["PRECIO"];
 						 $nameImage = urlencode($row["NOMBRE"]);
-			       echo "
-						 				<li class="."product".">
-							 				<a href="."product-detail.php?name="."$nameImage"." class="."product-link".">
-							 					<img width="."200px"." height="."200px"." src='".$img_path."' class="."product-img".">
-													<div clas="."product-texts".">
-													<p class="."product-name"." >
-							 							"."$nombre"."
-													</p>
-													<p class="."product-price"." >
-														Bs. ".  $precio."
-													</p>
-							 				</a>
-													</div>
-							 			</li>
-									";
+			       echo fun_show_product($name, $img_path,$cost,$nameImage);
 			     }
 			} else {
 			     echo "NO DATA...";
@@ -130,8 +77,12 @@
 						</center>";
       $conn->close();
     ?>
-		<a class="home-link" href= "index.php">
-			<button class="home-button">Home</button>
-		</a>
+		<center>
+						<a href= "index.php">
+							<button class="button1">
+								GO HOMEPAGE..
+							</button>
+						</a>
+		</center>
 	</body>
 </html>

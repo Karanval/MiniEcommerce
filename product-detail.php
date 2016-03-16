@@ -11,7 +11,7 @@
 	<body>
 		<header>
 			<div class="right-side">
-				<a class="cart-link" href="index.php">
+				<a class="cart-link" href="cart.php">
           <img width="30px" height="30px" src="images/cart.png" class="icono-carrito">
      		</a>
 				<?php
@@ -22,6 +22,38 @@
 					Mini e-commerce
 			</h1>
 		</header>
+		<div id="txtHint"></div>
+			<?php
+				if(isset($_GET['name'])){
+					$nomPro = $_GET['name'];
+				} else{
+					$nomPro = null;
+				}
+				if(isset($_GET['login'])){
+					$login = $_GET['login'];
+				} else {
+					$login = null;
+				}
+
+				$conn = new mysqli("localhost","root", "","miniecommerce");
+				if ($conn->connect_error) {
+						 die("Connection failed: ".$conn->connect_error);
+				}
+				if(isset($nomPro) && isset($login)){
+					$control = "SELECT nom_prod FROM carrito WHERE login = '".$login."' AND nom_prod='".$nomPro."'";
+					$result = $conn->query($control);
+					if(!($result->num_rows > 0)){
+						$sql="INSERT into carrito (login, nom_prod) values ('".$login."', '".$nomPro."') ";
+						$result = $conn->query($sql);
+						if($result){
+							echo '<script type="text/javascript">alert("added to cart")</script>';
+						} else {
+							echo "error";
+						}
+					}
+				}
+				$conn->close();
+			?>
 		<?php
       if(isset($_GET['name'])){
         $name = $_GET['name'];
@@ -73,8 +105,12 @@
 						<br>";
 					}
 					if(isset($_SESSION["user"]) ){
-						echo" <button class="."add_to_cart"." type="."button"." onclick="."addToCart(".$name.", ".$_SESSION["user"].")".">
-						Agregar al carrito</button>";
+						$login = $_SESSION["user"];
+						$func ="addToCart(".$name.", ".$login.")";
+						echo "<a href="."product-detail.php?name=".$name."&login=".$login.">";
+						#echo "<button class=add_to_cart type=button onclick =addToCart('".$name."','".$login."')>Agregar al carrito</button>";
+						echo "<button class=add_to_cart>Agregar al carrito</button>";
+						echo "</a>";
 					}
 										echo"		<br><br>
 										</center>
@@ -127,20 +163,5 @@
 		<a class="home-link" href= "index.php">
 			<button class="home-button">Home</button>
 		</a>
-		<script>
-		function addToCart() {
-			alert("entrrra");
-			<?php
-				$conn = new mysqli("localhost","root", "","miniecommerce");
-				if ($conn->connect_error) {
-						 die("Connection failed: ".$conn->connect_error);
-				}
-				$sql = "INSERT into carrito (login, nom_prod) values ('".login."', '".nomPro."')";
-				$result = $conn->query($sql);
-
-				$conn->close();
-			 ?>
-		}
-		</script>
 	</body>
 </html>

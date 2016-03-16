@@ -11,7 +11,7 @@
 <body>
 	<header>
 		<div class="right-side">
-			  <a class="cart-link" href="index.php">
+			  <a class="cart-link" href="cart.php">
           <img width="30px" height="30px" src="images/cart.png" class="icono-carrito">
      		</a>
 				<?php

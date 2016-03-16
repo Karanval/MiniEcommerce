@@ -37,7 +37,7 @@
 						$pagina = 1;
 					}
           $name_search = "%".$name."%";
-					$sql = "SELECT *  FROM PRODUCTOS WHERE NOMBRE LIKE '".$name_search."'";
+					$sql = "SELECT *  FROM PRODUCTOS WHERE activo=1 and NOMBRE LIKE '".$name_search."'";
 					$result = $conn->query($sql);
 
           if ($result->num_rows > 0) {
@@ -73,19 +73,6 @@
     ?>
   </center>
 	<section class="index-section">
-		<form class="index" action="search-product-result.php" method="post">
-			<?php
-				include("data-base-conexion.php");
-				$sql = "SELECT NOMBRE FROM PRODUCTOS WHERE ACTIVO =1";
-				$result = $conn->query($sql);
-
-				$cont = ceil(($result->num_rows) / 9);
-				for ($i=1; $i <= $cont; $i++) {
-					echo "<input type="."hidden"." name="."name"." value=".$name.">";
-					echo "<input class="."index-item"." type="."submit"." name="."pagina"." value=".$i.">";
-				}
-			?>
-		</form>
 	</section>
 	</body>
 </html>

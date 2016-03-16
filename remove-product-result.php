@@ -65,13 +65,13 @@
 										</section >
 										<a href= "."remove-product.php".">
 											<button class="."button1".">
-													TRY AGAIN.
+													Select More.
 											</button>
 										</a>
 										<br>
 										<a href= "."index.php".">
 											<button class="."button1".">
-												GO HOMEPAGE.
+												Home.
 											</button>
 										</a>
 									";

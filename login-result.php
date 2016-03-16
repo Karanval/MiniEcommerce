@@ -22,7 +22,6 @@
       }
       include("data-base-conexion.php");
       if(!empty($login) && !empty($password)){
-
         $sql = "SELECT * FROM USUARIO WHERE LOGIN='".$login."' AND PASSWD ='$password'";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {

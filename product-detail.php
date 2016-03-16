@@ -10,10 +10,13 @@
 
 	<body>
 		<header>
-			<div>
-					<?php
-					 	include ("add-login.php");
-					?>
+			<div class="right-side">
+				<a class="cart-link" href="cart.php">
+          <img width="30px" height="30px" src="images/cart.png" class="icono-carrito">
+     		</a>
+				<?php
+				 	include ("php/add-login.php");
+				?>
 			</div>
 			<h1 class="title">
 					Mini e-commerce
@@ -23,6 +26,8 @@
 			?>
 		</header>
 
+		<div id="txtHint"></div>
+			<?php include ("php/add-to-cart.php"); ?>
 		<?php
 			include("functions.php");
 
@@ -49,7 +54,44 @@
 					$stock = $row["STOCK"];
 					$description = $row["DESCRIPCION"];
 
-					echo fun_show_main_product($name,$path, $cost,$stock,$description);
+					#echo fun_show_main_product($name,$path, $cost,$stock,$description);
+					echo "  <center>
+				    <section class="."principal-product".">
+				      <ul class = "."product-details".">
+		            <li class = "."main-product".">
+		              <div class = "."marginProduct".">
+		                  <img width="."300px"." height="."300px"." src='".$path."' >
+
+		              </div>
+		            </li >
+
+		            <li class = "."main-product".">
+										<center>
+												<h1 class="."product-detail"."> "."$name"," </h1>
+												<br>
+												<p class = "."product-detail".">Cost : Bs. "."$cost"."</p>
+												<br>
+												<p class = "."product-detail".">Stock : "."$stock"."	</p>
+												<br>";
+					if(isset($description)){
+						echo "<p class = "."product-detail".">Description : "."$description"."</p>
+						<br>";
+					}
+					if(isset($_SESSION["user"]) ){
+						$login = $_SESSION["user"];
+						$func ="addToCart(".$name.", ".$login.")";
+						echo "<a href="."product-detail.php?name=".$name."&login=".$login.">";
+						#echo "<button class=add_to_cart type=button onclick =addToCart('".$name."','".$login."')>Agregar al carrito</button>";
+						echo "<button class=add_to_cart>Agregar al carrito</button>";
+						echo "</a>";
+					}
+										echo"		<br><br>
+										</center>
+		            </li>
+		      		</ul>
+				    </section>
+				    </center>";
+
       }else{
 				echo "NO  DATA";
 			}
@@ -77,12 +119,8 @@
 						</center>";
       $conn->close();
     ?>
-		<center>
-						<a href= "index.php">
-							<button class="button1">
-								GO HOMEPAGE..
-							</button>
-						</a>
-		</center>
+		<a class="home-link" href= "index.php">
+			<button class="home-button">Home</button>
+		</a>
 	</body>
 </html>

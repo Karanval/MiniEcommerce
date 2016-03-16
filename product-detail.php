@@ -23,6 +23,8 @@
 			?>
 		</header>
 
+		<div id="txtHint"></div>
+			<?php include ("php/add-to-cart.php"); ?>
 		<?php
 			include("functions.php");
 

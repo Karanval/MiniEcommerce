@@ -33,7 +33,6 @@
 						$bimage = true;
 
 				}else{
-
 				}
 				if(isset($_POST['name'])){
 					$name = $_POST['name'];
@@ -46,7 +45,12 @@
 				if(isset($_POST['cost'])){
 					$cost = $_POST['cost'];
 					if(!empty($cost)){
-						$bcost = true;
+						if($cost >=0){
+							$bcost = true;
+						}else{
+							$bcost = false;
+							echo "<center>Set positive numbers in cost field!!</center>";
+						}
 					}
 				}else {
 					$cost = null;
@@ -62,8 +66,13 @@
 
 				if(isset($_POST['stock'])){
 					$stock = $_POST['stock'];
-					if(!empty($stock)){
-						$bstock = true;
+					if(!empty($cost)){
+						if((int)$stock >=0){
+							$bstock = true;
+						}else{
+							$bstock = false;
+							echo "<center>Set positive numbers in stock field!!</center>";
+						}
 					}
 				}else{
 					$stock = null;
@@ -76,18 +85,24 @@
 					if ($conn->connect_error) {
 							 die("Connection failed: ".$conn->connect_error);
 					}
-					$sql = "SELECT *  FROM PRODUCTOS WHERE NOMBRE='".$name."'";
+					$sql = "SELECT *  FROM PRODUCTOS WHERE  ACTIVO=1 AND NOMBRE='".$name."'";
 					$result = $conn->query($sql);
 					if ($result->num_rows > 0) {
 							$bproduct = false;
 							echo "<center>THE PRODUCT EXISTS!!! </center><br>";
 					} else {//INSERT THE PRODUCT IN THE DATA BASE....
+							$sql = "SELECT *  FROM PRODUCTOS WHERE  ACTIVO=0 AND NOMBRE='".$name."'";
+							$result = $conn->query($sql);
+							if ($result->num_rows > 0) {
+									$sql = "UPDATE PRODUCTOS SET ACTIVO=1 WHERE NOMBRE='".$name."'";
+									echo "<center>THE OLD PRODUCT!!! </center><br>";
+							}else{
 							$path = $path.$_FILES['file']["name"];
-							$conn = new mysqli("localhost","root", "","miniecommerce");
+							//$conn = new mysqli("localhost","root", "","miniecommerce");
 							if ($conn->connect_error) {
 									 die("Connection failed: ".$conn->connect_error);
 							}
-							$sql = "INSERT INTO PRODUCTOS (NOMBRE,IMG,PRECIO,STOCK,DESCRIPCION) VALUES ('".$name."', '".$path."', '".$cost."', '".$stock."','".$description."')";
+							$sql = "INSERT INTO PRODUCTOS (NOMBRE,IMG,PRECIO,STOCK,DESCRIPCION,ACTIVO) VALUES ('".$name."', '".$path."', '".$cost."', '".$stock."','".$description."','1')";
 							$conn->query($sql);
 							$conn->close();
 							move_uploaded_file($_FILES['file']["tmp_name"],$path);
@@ -115,7 +130,7 @@
 											</section>
 									 </center>";
 
-					}
+					}}
 					//$conn->close();
 				}else{
 					if($bimage == false){

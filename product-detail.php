@@ -62,6 +62,7 @@
 		              </div>
 		            </li >
 
+<<<<<<< HEAD
 		            <li class = "."main-product".">
 										<center>
 												<h1 class="."product-detail"."> "."$name"," </h1>

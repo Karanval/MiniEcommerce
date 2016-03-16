@@ -28,8 +28,8 @@
 		?>
 	<section class="products-section">
 		<ul class="products-list">
-
 			<?php
+
 			if(isset($_GET['pagina']) && $_GET['pagina']!=1){
   			$pagina = 0;
 				for ($i=1; $i <$_GET['pagina'] ; $i++) {

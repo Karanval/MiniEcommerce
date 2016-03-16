@@ -21,41 +21,39 @@
 
      function fun_show_main_product($name,$path, $cost,$stock,$description){
        $chain = "  <center>
-         <section class="."principal-product".">
-           <ul class = "."product-details".">
-             <li class = "."main-product".">
-               <div class = "."marginProduct".">
-                   <img width="."300px"." height="."300px"." src='".$path."' >
-
-               </div>
-             </li >
-
-             <li class = "."main-product".">
-                 <center>
-                     <h1 class="."product-detail"."> "."$name"," </h1>
-                     <br>
-                     <p class = "."product-detail".">Cost : Bs. "."$cost"."</p>
-                     <br>
-                     <p class = "."product-detail".">Stock : "."$stock"."	</p>
-                     <br>";
-       if(isset($description)){
-         echo "<p class = "."product-detail".">Description : "."$description"."</p>
-         <br>";
-       }
-       if(isset($_SESSION["user"]) ){
-         $login = $_SESSION["user"];
-         $func ="addToCart(".$name.", ".$login.")";
-         echo "<a href="."product-detail.php?name=".$name."&login=".$login.">";
-         #echo "<button class=add_to_cart type=button onclick =addToCart('".$name."','".$login."')>Agregar al carrito</button>";
-         echo "<button class=add_to_cart>Agregar al carrito</button>";
-         echo "</a>";
-       }
-                 echo"		<br><br>
-                 </center>
-             </li>
-           </ul>
-         </section>
-         </center>";
+           <section
+           class="."principal-product".">
+             <ul class = "."product-detail".">
+                   <li class = "."main-product".">
+                     <div class = "."marginProduct".">
+                         <img width="."300px"." height="."300px"." src='".$path."' >
+                     </div>
+                   </li >
+                   <li class = "."main-product".">
+                       <center>
+                           <h1 class="."product-name"."> "."$name"." </h1>
+                           <br>
+                           <p class = "."product-name".">
+                               Cost :    $ "."$cost"."
+                           </p>
+                           <br>
+                           <p class = "."product-name".">
+                               Stock :    "."$stock"."
+                           </p>
+                           <br>
+                           <p class = "."product-name".">
+                               Description :    "."$description"."
+                           </p>
+                           <br>
+                           <button class="."button1".">
+                             Agregar al carrito
+                           </button>
+                           <br><br>
+                       </center>
+                   </li>
+             </ul>
+           </section>
+           </center>";
            return $chain;
      }
      function fun_show_product_remove($name,$img_path,$cost){

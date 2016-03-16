@@ -10,13 +10,10 @@
 
 	<body>
 		<header>
-			<div class="right-side">
-				<a class="cart-link" href="cart.php">
-          <img width="30px" height="30px" src="images/cart.png" class="icono-carrito">
-     		</a>
-				<?php
-				 	include ("php/add-login.php");
-				?>
+			<div>
+					<?php
+					 	include ("add-login.php");
+					?>
 			</div>
 			<h1 class="title">
 					Mini e-commerce
@@ -25,8 +22,7 @@
 				include ("search-product.html");
 			?>
 		</header>
-		<div id="txtHint"></div>
-			<<?php include ("php/add-to-cart.php"); ?>
+
 		<?php
 			include("functions.php");
 
@@ -54,7 +50,6 @@
 					$description = $row["DESCRIPCION"];
 
 					echo fun_show_main_product($name,$path, $cost,$stock,$description);
-
       }else{
 				echo "NO  DATA";
 			}
@@ -73,7 +68,7 @@
 						 $nameImage = urlencode($row["NOMBRE"]);
 			       echo fun_show_product($name, $img_path,$cost,$nameImage);
 			     }
-			}else{
+			} else {
 			     echo "NO DATA...";
 			}
 
@@ -82,8 +77,12 @@
 						</center>";
       $conn->close();
     ?>
-		<a class="home-link" href= "index.php">
-			<button class="home-button">Home</button>
-		</a>
+		<center>
+						<a href= "index.php">
+							<button class="button1">
+								GO HOMEPAGE..
+							</button>
+						</a>
+		</center>
 	</body>
 </html>

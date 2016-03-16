@@ -8,5 +8,6 @@
     echo  "<a class="."customer-link"." href="."add-customer-page.html".">
               <img width="."30px"." height="."30px"." src="."images/icono-persona.png"." class="."icono-cliente".">
            </a>";
+    //echo "<p align= right> without session </p>";
   }
  ?>

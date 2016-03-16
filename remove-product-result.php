@@ -18,15 +18,7 @@
 
     <section class="products-section">
 		<?php
-
-
-        $servername = "localhost";
-        $username = "root";
-        $db = "miniecommerce";
-        $conn = new mysqli($servername, $username, "", $db);
-        if ($conn->connect_error) {
-          die("Connection failed: " . $conn->connect_error);
-        }
+        include("data-base-conexion.php");
           $products = count($_POST);
           $array = array_keys($_POST); // obtiene los nombres de las varibles
           $array_values = array_values($_POST);// obtiene los valores de las varibles

@@ -11,16 +11,7 @@
 	<header>
 		 <?php
 		 		session_start();
-				$servername = "localhost";
-	      $username = "root";
-	      $db = "miniecommerce";
-	      // Create connection
-	      $conn = new mysqli($servername, $username, "", $db);
-	      // Check connection
-	      if ($conn->connect_error) {
-	           die("Connection failed: " . $conn->connect_error);
-	      }
-
+				include("data-base-conexion.php");
 				$login = $_SESSION["login"];
 				$timeInit = $_SESSION["timeInit"];
 				$sql = "SELECT * FROM SESION WHERE LOGIN='".$login."' AND FECHA_INI ='".$timeInit."'";
@@ -33,13 +24,10 @@
 				  $dateEnd   = new DateTime($timeEnd);
 					$dateDiff  = $dateStart->diff($dateEnd);
 				  $date = $dateDiff->format("%Y-%M-%D %H:%I:%S");
-
 					$active = 0;
 					$sql = "UPDATE SESION SET FECHA_FIN='".$timeEnd."',ACTIVO='".$active."',TIEMPO = '".$date."' WHERE LOGIN='".$login."' AND FECHA_INI ='".$timeInit."'";
 					$result = $conn->query($sql);
-
 				}
-
 				$conn->close();
 		 		session_destroy();
 		   	include ("add-login.php");

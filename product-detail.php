@@ -29,7 +29,7 @@
 		<div id="txtHint"></div>
 			<?php include ("php/add-to-cart.php"); ?>
 		<?php
-			include("functions.php");
+			include("php/functions.php");
 
       if(isset($_GET['name'])){
         $name = $_GET['name'];
@@ -42,7 +42,7 @@
         $path = null;
       }
 
-      include("data-base-conexion.php");
+      include("php/data-base-conexion.php");
 
 			$sql = "SELECT * FROM PRODUCTOS WHERE NOMBRE = '".$name."'";
       if(!empty($name)){

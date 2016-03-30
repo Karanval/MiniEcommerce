@@ -15,7 +15,7 @@
     <center>
 		<?php
 				include ("search-product.html");
-				include ("functions.php");
+				include ("php/functions.php");
 
 				$bname = false;
 				if(isset($_POST['name'])){
@@ -48,7 +48,7 @@
 
 
 				if($bname && $costNum){
-					include("data-base-conexion.php");
+					include("php/data-base-conexion.php");
 					if(isset($_POST['pagina']) && $_POST['pagina']!=1){
 		  			$pagina = 0;
 						for ($i=1; $i <$_POST['pagina'] ; $i++) {

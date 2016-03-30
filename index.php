@@ -33,8 +33,8 @@
 	<section class="products-section">
 		<ul class="products-list">
 			<?php
-			include("functions.php");
-			include("data-base-conexion.php");
+			include("php/functions.php");
+			include("php/data-base-conexion.php");
 
 			if(isset($_GET['pagina']) && $_GET['pagina']!=1){
   			$pagina = 0;

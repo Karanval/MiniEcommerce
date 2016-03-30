@@ -32,7 +32,7 @@
 
             $row = $result->fetch_assoc();
             $login = $row["LOGIN"];
-            $name = $row["NOMBRE"];
+            $name = $row["LOGIN"];
             $timeInit = date("Y-m-d H:i:s");
             $active = 1;
             $sql = "INSERT into SESION (LOGIN,FECHA_INI,ACTIVO) values ('".$login."','".$timeInit."','".$active."')";

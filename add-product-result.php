@@ -93,6 +93,7 @@
 							$result = $conn->query($sql);
 							if ($result->num_rows > 0) {
 									$sql = "UPDATE PRODUCTOS SET ACTIVO=1 WHERE NOMBRE='".$name."'";
+									$result = $conn->query($sql);
 									echo "<center>THE OLD PRODUCT!!! </center><br>";
 							}else{
 							$path = $path.$_FILES['file']["name"];

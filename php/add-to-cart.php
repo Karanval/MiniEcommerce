@@ -9,7 +9,6 @@
   } else {
     $login = null;
   }
-
   $conn = new mysqli("localhost","root", "","miniecommerce");
   if ($conn->connect_error) {
        die("Connection failed: ".$conn->connect_error);
@@ -25,6 +24,8 @@
       } else {
         echo "error";
       }
+    } else {
+      echo '<script type="text/javascript">alert("Product already in Cart")</script>';
     }
   }
   $conn->close();

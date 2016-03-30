@@ -83,7 +83,7 @@
                 $img_path = $row["IMG"];
                 $cost = $row["PRECIO"];
  						    $real_name = urlencode($row["NOMBRE"]);
-								echo fun_show_product($name_product, $img_path,$cost,$real_name);
+								echo fun_show_product($name_product, $img_path,$cost,$real_name,12);
 								}
               	echo "</ul>";
 					} else {

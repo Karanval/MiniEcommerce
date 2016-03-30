@@ -1,8 +1,8 @@
 <?php
 
-     function fun_show_product($name, $img_path,$cost,$nameImage){
-       $chain = "
-              <li class="."product".">
+     function fun_show_product($name, $img_path,$cost,$nameImage,$cont){
+       $id = "product-li-".$cont;
+       $chain = "<li class="."product"." id=\"$id\"
                 <a href="."product-detail.php?name=".$nameImage." class="."product-link".">
                   <img width="."200px"." height="."200px"." src='".$img_path."' class="."product-img".">
                     <div clas="."product-texts".">
@@ -16,6 +16,11 @@
                     </div>
               </li>
             ";
+      return $chain;
+     }
+
+     function pro_desc ($name, $cost, $stock, $desc){
+       $chain = "<li class="."product"." id="."product-li".">name: ".$name." <br>cost: ".$cost." <br>stock: ".$stock." <br>desc: ".$desc." <br></li>";
       return $chain;
      }
 

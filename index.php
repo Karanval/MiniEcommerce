@@ -48,12 +48,17 @@
 			$result = $conn->query($sql);
 
 			if ($result->num_rows > 0) {
+				$cont = 0;
 			     while($row = $result->fetch_assoc()) {
 						 $name = ($row["NOMBRE"]);
 						 $img_path = $row["IMG"];
 						 $cost = $row["PRECIO"];
 						 $nameImage = urlencode($row["NOMBRE"]);
-						 echo fun_show_product($name, $img_path,$cost,$nameImage);
+						 $cont = $cont + 1;
+						 echo fun_show_product($name, $img_path,$cost,$nameImage, $cont);
+
+
+						 echo "<button type=\"button\" onclick=\"change('$name',$cont)\">sup</button>";
 			     }
 			} else {
 			     echo "0 results";
@@ -71,5 +76,24 @@
 		</form>
 	</section>
 
+<script>
+function change(namecont) {
+  //var x = document.getElementById("product-li");
+	//alert(x.innerHTML);
+	//alert(" ");
+	var id = "product-li-1";
+	document.getElementById("product-li-9");
+	<?php
+	include("php/data-base-conexion.php");
+		$sql = "select stock, DESCRIPCION from productos where nombre = '$name'";
+		$des = $conn->query($sql);
+		$tupla = $des->fetch_assoc();
+		$stock = $tupla["stock"];
+		$desc = $tupla["DESCRIPCION"];
+		if(!isset($desc)){$desc = "no desc";}
+		echo pro_desc($name, $cost,$stock,$desc);
+	?>
+}
+</script>
 </body>
 </html>

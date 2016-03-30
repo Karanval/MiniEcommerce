@@ -26,7 +26,28 @@
 				} else{
 					$name = null;
 				}
-				if($bname){
+
+				$bcategory = false;
+				if(isset($_POST['category'])){
+					$category = $_POST['category'];
+					if(!empty($category)){
+						$bcategory = true;
+					}
+				} else{
+					$category = null;
+				}
+
+				$costNum = true;
+
+				if(strcmp($category,"cost") == 0){
+					if(is_numeric($name)) {
+					}else{
+						$costNum = false;
+					}
+				}
+
+
+				if($bname && $costNum){
 					include("data-base-conexion.php");
 					if(isset($_POST['pagina']) && $_POST['pagina']!=1){
 		  			$pagina = 0;
@@ -36,8 +57,20 @@
 					} else {
 						$pagina = 1;
 					}
-          $name_search = "%".$name."%";
-					$sql = "SELECT *  FROM PRODUCTOS WHERE activo=1 and NOMBRE LIKE '".$name_search."'";
+
+					if(strcmp($category,"name") == 0){
+						$name_search = "%".$name."%";
+						$sql = "SELECT *  FROM PRODUCTOS WHERE activo=1 and NOMBRE LIKE '".$name_search."'";
+					}
+					if(strcmp($category,"cost") == 0){
+						$name_search = $name;
+						$sql = "SELECT *  FROM PRODUCTOS WHERE activo=1 and PRECIO LIKE '".$name_search."'";
+					}
+					if(strcmp($category,"description") == 0){
+						$name_search = "%".$name."%";
+						$sql = "SELECT *  FROM PRODUCTOS WHERE activo=1 and DESCRIPCION LIKE '".$name_search."'";
+					}
+					//$sql = "SELECT *  FROM PRODUCTOS WHERE activo=1 and NOMBRE LIKE '".$name_search."'";
 					$result = $conn->query($sql);
 
           if ($result->num_rows > 0) {
@@ -58,8 +91,8 @@
           }
 
 				}else{
-					if($bname == false){
-						echo "<center>ERROR NAME!!!<br></center>";
+					if($bname == false || $costNum==false){
+						echo "<center>ERROR DATA!!!<br></center>";
 					}
 				}
 				echo "</section>";

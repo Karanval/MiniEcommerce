@@ -78,14 +78,28 @@
 
 <script>
 function change(name, cont) {
-  //var x = document.getElementById("product-li");
-	//alert(x.innerHTML);
-	//var id = "product-li-1";
 	window.location.href = "index.php?actual=" + name;
 	<?php
 	if(isset($_GET["actual"])){
-		$nombre = $_GET["actual"];
-		echo "alert(".$nombre.");";
+	$nombre = $_GET["actual"];
+	$servername = "localhost";
+	$username = "root";
+	$db = "miniecommerce";
+	$conne = new mysqli($servername, $username, "", $db);
+	if ($conne->connect_error) {
+		 echo "Connection failed: " . $conne->connect_error;
+	 }
+	$sql = "select precio, stock, DESCRIPCION from productos where nombre = '$nombre'";
+	$des = $conne->query($sql);
+	$tupla = $des->fetch_assoc();
+	$cost = $tupla["precio"];
+	$stock = $tupla["stock"];
+
+	$desc = $tupla["DESCRIPCION"];
+	if(!isset($desc)){$desc = "no desc";}
+	echo "var id = \"product-li-\" + cont;";
+	echo "document.getElementById(id).innerHTML =\"". pro_desc($name, $cost,$stock,$desc)."\";";
+	$conne->close();
 	}
 	?>
 }

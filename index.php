@@ -77,21 +77,16 @@
 	</section>
 
 <script>
-function change(namecont) {
+function change(name, cont) {
   //var x = document.getElementById("product-li");
 	//alert(x.innerHTML);
-	//alert(" ");
-	var id = "product-li-1";
-	document.getElementById("product-li-9");
+	//var id = "product-li-1";
+	window.location.href = "index.php?actual=" + name;
 	<?php
-	include("php/data-base-conexion.php");
-		$sql = "select stock, DESCRIPCION from productos where nombre = '$name'";
-		$des = $conn->query($sql);
-		$tupla = $des->fetch_assoc();
-		$stock = $tupla["stock"];
-		$desc = $tupla["DESCRIPCION"];
-		if(!isset($desc)){$desc = "no desc";}
-		echo pro_desc($name, $cost,$stock,$desc);
+	if(isset($_GET["actual"])){
+		$nombre = $_GET["actual"];
+		echo "alert(".$nombre.");";
+	}
 	?>
 }
 </script>

@@ -19,7 +19,7 @@
       return $chain;
      }
 
-     function pro_desc ($name, $cost, $stock, $desc){
+     function pro_desc($name, $cost, $stock, $desc){
        $chain = "<li class="."product"." id="."product-li".">name: ".$name." <br>cost: ".$cost." <br>stock: ".$stock." <br>desc: ".$desc." <br></li>";
       return $chain;
      }

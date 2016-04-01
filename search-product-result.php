@@ -1,20 +1,4 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="css/remove-product.css">
-	<title>
-		Home
-	</title>
-	</head>
-
-	<body>
-		<header>
-			<h1 class="title">Mini Ecommerce</h1>
-		</header>
-    <center>
-		<?php
-				include ("search-product.html");
+<?php
 				include ("php/functions.php");
 
 				$bname = false;
@@ -49,14 +33,7 @@
 
 				if($bname && $costNum){
 					include("php/data-base-conexion.php");
-					if(isset($_POST['pagina']) && $_POST['pagina']!=1){
-		  			$pagina = 0;
-						for ($i=1; $i <$_POST['pagina'] ; $i++) {
-							$pagina = $pagina + 9;
-						}
-					} else {
-						$pagina = 1;
-					}
+
 
 					if(strcmp($category,"name") == 0){
 						$name_search = "%".$name."%";
@@ -84,7 +61,9 @@
                 $cost = $row["PRECIO"];
  						    $real_name = urlencode($row["NOMBRE"]);
 								echo fun_show_product($name_product, $img_path,$cost,$real_name);
+								echo "end";
 								}
+								echo "endssss";
               	echo "</ul>";
 					} else {
               echo "<center><h4>There is no search results!!!! </h4></center>";
@@ -103,9 +82,4 @@
 									</button>
 								</a>
 							</center>";
-    ?>
-  </center>
-	<section class="index-section">
-	</section>
-	</body>
-</html>
+?>

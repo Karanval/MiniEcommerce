@@ -27,7 +27,6 @@
 					$costNum = true;
 				}
 				if($bname || $costNum){
-					include("php/data-base-conexion.php");
 
 					if(strcmp($category,"name") == 0){
 						$name_search = "%".$name."%";
@@ -40,7 +39,8 @@
 						$name_search = "%".$name."%";
 						$sql = "SELECT *  FROM PRODUCTOS WHERE activo=1 and DESCRIPCION LIKE '".$name_search."'";
 					}
-					$result = $conn->query($sql);
+					
+					$result = fun_sql_query($sql);
 
           if ($result->num_rows > 0) {
 							$bproduct = false;
@@ -49,6 +49,9 @@
 
 							echo "<section class="."products-section".">";
               echo "<ul class="."products-list".">";
+
+							$datas = $result->fetch_assoc();
+
               while($row = $result->fetch_assoc()) {
                 $name_product= ($row["NOMBRE"]);
                 $img_path = $row["IMG"];

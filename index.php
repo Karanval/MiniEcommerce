@@ -102,7 +102,6 @@
 					</form>
 				</center>
 	</header>
-
 	<center id="ajax_loader">
 		<?php
 			include ("php/verify-roles.php");
@@ -112,7 +111,6 @@
 		<ul  class="products-list">
 			<?php
 			include("php/functions.php");
-			include("php/data-base-conexion.php");
 			if(isset($_GET['pagina']) && $_GET['pagina']!=1){
   			$pagina = 0;
 				for ($i=1; $i <$_GET['pagina'] ; $i++) {
@@ -122,7 +120,7 @@
 				$pagina = 1;
 			}
 			$sql = "SELECT NOMBRE, IMG, PRECIO FROM PRODUCTOS WHERE ACTIVO=1 LIMIT 9 OFFSET $pagina";
-			$result = $conn->query($sql);
+			$result = fun_sql_query($sql);
 			if ($result->num_rows > 0) {
 			     while($row = $result->fetch_assoc()) {
 						 $name = ($row["NOMBRE"]);
@@ -134,7 +132,6 @@
 			} else {
 			     echo "0 results";
 			}
-			$conn->close();
 			?>
 		</ul>
 	</section >

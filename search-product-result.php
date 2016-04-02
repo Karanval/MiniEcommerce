@@ -1,6 +1,5 @@
 <?php
 				include ("php/functions.php");
-
 				$bname = false;
 				if(isset($_POST['name'])){
 					$name = $_POST['name'];
@@ -10,7 +9,6 @@
 				} else{
 					$name = null;
 				}
-
 				$bcategory = false;
 				if(isset($_POST['category'])){
 					$category = $_POST['category'];
@@ -20,39 +18,35 @@
 				} else{
 					$category = null;
 				}
-
-				$costNum = true;
-
+				$costNum = false;
 				if(strcmp($category,"cost") == 0){
-					if(is_numeric($name)) {
-					}else{
-						$costNum = false;
-					}
+					$range = $_POST['range'];
+					$ls = explode(" ", $range);
+					$numStart =$ls[0];
+					$numEnd = $ls[1];
+					$costNum = true;
 				}
-
-
-				if($bname && $costNum){
+				if($bname || $costNum){
 					include("php/data-base-conexion.php");
-
 
 					if(strcmp($category,"name") == 0){
 						$name_search = "%".$name."%";
 						$sql = "SELECT *  FROM PRODUCTOS WHERE activo=1 and NOMBRE LIKE '".$name_search."'";
 					}
 					if(strcmp($category,"cost") == 0){
-						$name_search = $name;
-						$sql = "SELECT *  FROM PRODUCTOS WHERE activo=1 and PRECIO LIKE '".$name_search."'";
+						$sql = "SELECT *  FROM PRODUCTOS WHERE PRECIO BETWEEN '".$numStart."'  AND  '".$numEnd."' ";
 					}
 					if(strcmp($category,"description") == 0){
 						$name_search = "%".$name."%";
 						$sql = "SELECT *  FROM PRODUCTOS WHERE activo=1 and DESCRIPCION LIKE '".$name_search."'";
 					}
-					//$sql = "SELECT *  FROM PRODUCTOS WHERE activo=1 and NOMBRE LIKE '".$name_search."'";
 					$result = $conn->query($sql);
 
           if ($result->num_rows > 0) {
 							$bproduct = false;
-							echo "<center><h4>Search results: ".$result->num_rows."!!!! </h4></center><br>";
+							echo "<center><h4>Search results: ".$result->num_rows."!!!! </h4>
+										</center><br>";
+
 							echo "<section class="."products-section".">";
               echo "<ul class="."products-list".">";
               while($row = $result->fetch_assoc()) {
@@ -61,16 +55,15 @@
                 $cost = $row["PRECIO"];
  						    $real_name = urlencode($row["NOMBRE"]);
 								echo fun_show_product($name_product, $img_path,$cost,$real_name);
-								echo "end";
 								}
-								echo "endssss";
               	echo "</ul>";
 					} else {
-              echo "<center><h4>There is no search results!!!! </h4></center>";
+              echo "<center><h4>There is no search results!!!! </h4>
+										</center>";
           }
 
 				}else{
-					if($bname == false || $costNum==false){
+					if($bname == false){
 						echo "<center>ERROR DATA!!!<br></center>";
 					}
 				}

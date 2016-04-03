@@ -51,7 +51,7 @@
 							echo "<section class="."products-section".">";
               echo "<ul class="."products-list".">";
 
-							$datas = $result->fetch_assoc();
+							#$datas = $result->fetch_assoc();
 							if ($result->num_rows > 0) {
 								$cont = 0;
 									 while($row = $result->fetch_assoc()) {

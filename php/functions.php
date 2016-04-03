@@ -40,10 +40,13 @@
       if(isset($desc)){
         $chain = $chain. " <br>Desc: ".$desc."<br>";
       }
+      if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+      }
       if(isset($_SESSION["user"]) ){
         $login = $_SESSION["user"];
         #$func ="addToCart(".$name.", ".$login.")";
-        $chain = $chain . "<button class=\"add-to-cart\" type="."button"." onclick = addToCart('".$name."','".$login."')>Agregar al carrito</button>";
+        $chain = $chain . "<br><button class=\"add-to-cart\" type="."button"." onclick = addToCart('".$name."','".$login."')>Agregar al carrito</button>";
       }
       $chain = $chain . " </div>";
       return $chain;

@@ -1,19 +1,31 @@
 
-					<center>
-					<div class="">
-					<div class="">
-						<form class="" action="search-product-result.php" method="post">
-							<ul class = "">
-								<input class="flexsearch--input" type="search" name="name"placeholder="search">
-							<select name="category">
-					        <option value="name">name</option>
-					        <option value="cost">Cost</option>
-					        <option value="description">Description</option>
-
-					    </select>
-							<input class="flexsearch--submit" type="submit" value="&#10140;"/>
-							</ul>
-						</form>
+	</head>
+	<body>
+		<center>
+		<form id="searchForm" class="" action="search-product-result.php" method="post">
+		<div style="margin: 10px;">
+			<div style="display: inline-block;">
+					<div id="slider-range" style="width: 200px;"></div>
+					<div style="display: inline-block;margin: 5px">
+							<label for="amount" style="text-align: rigth;">Price range:</label>
 					</div>
-				</div>
-			</center>
+					<div style="display: inline-block;">
+							<input name="range"  id="amount"  style="width: 100px;border:0; color:#f900f; font-weight:bold;">
+					</div>
+			</div>
+			<div style="display: inline-block;">
+				<input class="flexsearch--input" type="search" name="name"placeholder="search">
+			</div>
+			<div style="display: inline-block;">
+					<select name="category">
+						<option value="name">name</option>
+						<option value="cost">Cost</option>
+						<option value="description">Description</option>
+					</select>
+			</div>
+			<div style="display: inline-block;">
+				<input class="flexsearch--submit" type="submit" value="&#10140;"/>
+			</div>
+		</div>
+		</form>
+		</center>

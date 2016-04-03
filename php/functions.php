@@ -1,5 +1,20 @@
 <?php
 
+     function fun_sql_query($sql){
+       $result;
+
+       $servername = "localhost";
+       $username = "root";
+       $db = "miniecommerce";
+       $conn = new mysqli($servername, $username, "", $db);
+       if ($conn->connect_error) {
+          echo "Connection failed: " . $conn->connect_error;
+        }
+       $result = $conn->query($sql);
+       $conn->close();
+
+       return $result;
+     }
      function fun_show_product($name, $img_path,$cost,$nameImage,$cont){
        $id = "product-img-".$cont;
        $chain = "<div class="."product-ima"." id=\"$id\">

@@ -20,8 +20,9 @@
 				}
 				$costNum = false;
 				if(strcmp($category,"cost") == 0){
+
 					$range = $_POST['range'];
-					$ls = explode(" ", $range);
+					$ls = explode("  ", $range);
 					$numStart =$ls[0];
 					$numEnd = $ls[1];
 					$costNum = true;
@@ -39,7 +40,7 @@
 						$name_search = "%".$name."%";
 						$sql = "SELECT *  FROM PRODUCTOS WHERE activo=1 and DESCRIPCION LIKE '".$name_search."'";
 					}
-					
+
 					$result = fun_sql_query($sql);
 
           if ($result->num_rows > 0) {

@@ -4,6 +4,7 @@
 <head>
 	<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<title>
 		Home
 	</title>
@@ -44,21 +45,25 @@
 			} else {
 				$pagina = 1;
 			}
-			$sql = "SELECT NOMBRE, IMG, PRECIO FROM PRODUCTOS WHERE ACTIVO=1 LIMIT 9 OFFSET $pagina";
+			$sql = "SELECT NOMBRE, IMG, PRECIO, STOCK, DESCRIPCION FROM PRODUCTOS WHERE ACTIVO=1 LIMIT 9 OFFSET $pagina";
 			$result = $conn->query($sql);
 
 			if ($result->num_rows > 0) {
 				$cont = 0;
 			     while($row = $result->fetch_assoc()) {
-						 $name = ($row["NOMBRE"]);
-						 $img_path = $row["IMG"];
-						 $cost = $row["PRECIO"];
-						 $nameImage = urlencode($row["NOMBRE"]);
-						 $cont = $cont + 1;
-						 echo fun_show_product($name, $img_path,$cost,$nameImage, $cont);
+						 echo "<li class= "."product".">";
+							 $name = ($row["NOMBRE"]);
+							 $img_path = $row["IMG"];
+							 $cost = $row["PRECIO"];
+							 $stock = $row["STOCK"];
+							 $desc = $row["DESCRIPCION"];
+							 $nameImage = urlencode($row["NOMBRE"]);
+							 $cont = $cont + 1;
+							 echo pro_desc($name, $cost, $stock, $desc);
+							 echo fun_show_product($name, $img_path,$cost,$nameImage, $cont);
 
-
-						 echo "<button type=\"button\" onclick=\"change('$name',$cont)\">sup</button>";
+							 echo "<button class=\"switch\" type=\"button\" onclick=\"change($cont)\"><i class=\"material-icons\">add</i></button>";
+						 echo "</li>";
 			     }
 			} else {
 			     echo "0 results";
@@ -77,32 +82,27 @@
 	</section>
 
 <script>
-function change(name, cont) {
-	window.location.href = "index.php?actual=" + name;
-	<?php
-	if(isset($_GET["actual"])){
-	$nombre = $_GET["actual"];
-	$servername = "localhost";
-	$username = "root";
-	$db = "miniecommerce";
-	$conne = new mysqli($servername, $username, "", $db);
-	if ($conne->connect_error) {
-		 echo "Connection failed: " . $conne->connect_error;
-	 }
-	$sql = "select precio, stock, DESCRIPCION from productos where nombre = '$nombre'";
-	$des = $conne->query($sql);
-	$tupla = $des->fetch_assoc();
-	$cost = $tupla["precio"];
-	$stock = $tupla["stock"];
-
-	$desc = $tupla["DESCRIPCION"];
-	if(!isset($desc)){$desc = "no desc";}
-	echo "var id = \"product-li-\" + cont;";
-	echo "document.getElementById(id).innerHTML =\"". pro_desc($name, $cost,$stock,$desc)."\";";
-	$conne->close();
-	}
-	?>
+function change(cont) {
+	var id = "product-img-"+cont;
+	var elemento =  document.getElementById(id);
+	//alert (elemento.style.opacity);
+  if(elemento.style.display==="none"){
+      elemento.style.display = "block";
+  }else {
+      elemento.style.display = "none";
+  }
 }
+	function addToCart(name, login){
+		var xhttp;
+		xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (xhttp.readyState == 4 && xhttp.status == 200) {
+				alert (xhttp.responseText);
+			}
+		};
+		xhttp.open("GET", "php/add-to-cart.php?nomPro="+name+"&login="+login, true);
+		xhttp.send();
+	}
 </script>
 </body>
 </html>

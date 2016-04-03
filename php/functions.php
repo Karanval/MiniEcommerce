@@ -1,26 +1,36 @@
 <?php
 
      function fun_show_product($name, $img_path,$cost,$nameImage,$cont){
-       $id = "product-li-".$cont;
-       $chain = "<li class="."product"." id=\"$id\"
-                <a href="."product-detail.php?name=".$nameImage." class="."product-link".">
-                  <img width="."200px"." height="."200px"." src='".$img_path."' class="."product-img".">
-                    <div clas="."product-texts".">
+       $id = "product-img-".$cont;
+       $chain = "<div class="."product-ima"." id=\"$id\">
+
+                  <img src='".$img_path."' class="."product-img".">
+                    <div class="."product-texts".">
                     <p class="."product-name"." >
                       "."$name"."
                     </p>
                     <p class="."product-price"." >
                       Bs. ".  $cost."
                     </p>
-                </a>
                     </div>
-              </li>
+                </a>
+
+              </div>
             ";
       return $chain;
      }
 
      function pro_desc($name, $cost, $stock, $desc){
-       $chain = "<li class="."product"." id="."product-li".">name: ".$name." <br>cost: ".$cost." <br>stock: ".$stock." <br>desc: ".$desc." <br></li>";
+      $chain = "<div class="."product-des".">Name: ".$name." <br>Cost: ".$cost." <br>Stock: ".$stock;
+      if(isset($desc)){
+        $chain = $chain. " <br>Desc: ".$desc."<br>";
+      }
+      if(isset($_SESSION["user"]) ){
+        $login = $_SESSION["user"];
+        #$func ="addToCart(".$name.", ".$login.")";
+        $chain = $chain . "<button class=\"add-to-cart\" type="."button"." onclick = addToCart('".$name."','".$login."')>Agregar al carrito</button>";
+      }
+      $chain = $chain . " </div>";
       return $chain;
      }
 

@@ -92,7 +92,7 @@ function change(cont) {
       elemento.style.display = "none";
   }
 }
-	function addToCart(name, login){
+function addToCart(name, login){
 		var xhttp;
 		xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
@@ -102,7 +102,7 @@ function change(cont) {
 		};
 		xhttp.open("GET", "php/add-to-cart.php?nomPro="+name+"&login="+login, true);
 		xhttp.send();
-	}
+}
 </script>
 </body>
 </html>

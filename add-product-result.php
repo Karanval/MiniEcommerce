@@ -83,16 +83,16 @@
 					if ($conn->connect_error) {
 							 die("Connection failed: ".$conn->connect_error);
 					}
-					$sql = "SELECT *  FROM PRODUCTOS WHERE  ACTIVO=1 AND NOMBRE='".$name."'";
+					$sql = "SELECT *  FROM productos WHERE  Activo=1 AND NOMBRE='".$name."'";
 					$result = $conn->query($sql);
 					if ($result->num_rows > 0) {
 							$bproduct = false;
 							echo "<center>THE PRODUCT EXISTS!!! </center><br>";
 					} else {//INSERT THE PRODUCT IN THE DATA BASE....
-							$sql = "SELECT *  FROM PRODUCTOS WHERE  ACTIVO=0 AND NOMBRE='".$name."'";
+							$sql = "SELECT *  FROM productos WHERE  Activo=0 AND NOMBRE='".$name."'";
 							$result = $conn->query($sql);
 							if ($result->num_rows > 0) {
-									$sql = "UPDATE PRODUCTOS SET ACTIVO=1 WHERE NOMBRE='".$name."'";
+									$sql = "UPDATE productos SET Activo=1 WHERE NOMBRE='".$name."'";
 									$result = $conn->query($sql);
 									echo "<center>THE OLD PRODUCT!!! </center><br>";
 							}else{
@@ -101,7 +101,7 @@
 							if ($conn->connect_error) {
 									 die("Connection failed: ".$conn->connect_error);
 							}
-							$sql = "INSERT INTO PRODUCTOS (NOMBRE,IMG,PRECIO,STOCK,DESCRIPCION,ACTIVO) VALUES ('".$name."', '".$path."', '".$cost."', '".$stock."','".$description."','1')";
+							$sql = "INSERT INTO productos (NOMBRE,IMG,PRECIO,STOCK,DESCRIPCION,Activo) VALUES ('".$name."', '".$path."', '".$cost."', '".$stock."','".$description."','1')";
 							$conn->query($sql);
 							$conn->close();
 							move_uploaded_file($_FILES['file']["tmp_name"],$path);

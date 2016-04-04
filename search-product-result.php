@@ -31,35 +31,47 @@
 
 					if(strcmp($category,"name") == 0){
 						$name_search = "%".$name."%";
-						$sql = "SELECT *  FROM PRODUCTOS WHERE activo=1 and NOMBRE LIKE '".$name_search."'";
+						$sql = "SELECT *  FROM productos WHERE Activo=1 and NOMBRE LIKE '".$name_search."'";
 					}
 					if(strcmp($category,"cost") == 0){
-						$sql = "SELECT *  FROM PRODUCTOS WHERE PRECIO BETWEEN '".$numStart."'  AND  '".$numEnd."' ";
+						$sql = "SELECT *  FROM productos WHERE PRECIO BETWEEN '".$numStart."'  AND  '".$numEnd."' ";
 					}
 					if(strcmp($category,"description") == 0){
 						$name_search = "%".$name."%";
-						$sql = "SELECT *  FROM PRODUCTOS WHERE activo=1 and DESCRIPCION LIKE '".$name_search."'";
+						$sql = "SELECT *  FROM productos WHERE Activo=1 and DESCRIPCION LIKE '".$name_search."'";
 					}
 
 					$result = fun_sql_query($sql);
 
           if ($result->num_rows > 0) {
 							$bproduct = false;
-							echo "<center><h4>Search results: ".$result->num_rows."!!!! </h4>
-										</center><br>";
+							#echo "<center><h4>Search results: ".$result->num_rows."!!!! </h4>
+							#			</center><br>";
 
 							echo "<section class="."products-section".">";
               echo "<ul class="."products-list".">";
 
-							$num = 0;
-              while($row = $result->fetch_assoc()) {
-								$name_product= ($row["NOMBRE"]);
-                $img_path = $row["IMG"];
-                $cost = $row["PRECIO"];
- 						    $real_name = urlencode($row["NOMBRE"]);
-								echo fun_show_product($name_product, $img_path,$cost,$real_name);
-								$num= $num+1;
-								}
+							#$datas = $result->fetch_assoc();
+							if ($result->num_rows > 0) {
+								$cont = 0;
+									 while($row = $result->fetch_assoc()) {
+										 echo "<li class= "."product".">";
+											 $name = ($row["NOMBRE"]);
+											 $img_path = $row["IMG"];
+											 $cost = $row["PRECIO"];
+											 $stock = $row["STOCK"];
+											 $desc = $row["DESCRIPCION"];
+											 $nameImage = urlencode($row["NOMBRE"]);
+											 $cont = $cont + 1;
+											 echo pro_desc($name, $cost, $stock, $desc);
+											 echo fun_show_product($name, $img_path,$cost,$nameImage, $cont);
+
+											 echo "<button class=\"switch\" type=\"button\" onclick=\"change($cont)\"><i class=\"material-icons\">add</i></button>";
+										 echo "</li>";
+									 }
+							} else {
+									 echo "0 results";
+							}
               	echo "</ul>";
 					} else {
               echo "<center><h4>There is no search results!!!! </h4>
@@ -75,7 +87,7 @@
 				echo "<center>
 								<a href= "."index.php".">
 									<button class="."button1".">
-										GO HOMEPAGE.
+										Home
 									</button>
 								</a>
 							</center>";

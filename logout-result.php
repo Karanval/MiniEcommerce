@@ -11,11 +11,17 @@
 	<header>
 		 <?php
 		 		session_start();
-				include("php/functions.php");
+				$servername = "localhost";
+        $username = "root";
+        $db = "miniecommerce";
+        $conn = new mysqli($servername, $username, "", $db);
+        if ($conn->connect_error) {
+           echo "Connection failed: " . $conn->connect_error;
+         }
 				$login = $_SESSION["login"];
 				$timeInit = $_SESSION["timeInit"];
-				$sql = "SELECT * FROM SESION WHERE LOGIN='".$login."' AND FECHA_INI ='".$timeInit."'";
-        $result = fun_sql_query($sql);
+				$sql = "SELECT * FROM sesion WHERE LOGIN='".$login."' AND FECHA_INI ='".$timeInit."'";
+        $result = $conn->query($sql);
 
 				if ($result->num_rows > 0) {
 					$row = $result->fetch_assoc();
@@ -25,10 +31,10 @@
 					$dateDiff  = $dateStart->diff($dateEnd);
 				  $date = $dateDiff->format("%Y-%M-%D %H:%I:%S");
 					$active = 0;
-					$sql = "UPDATE SESION SET FECHA_FIN='".$timeEnd."',ACTIVO='".$active."',TIEMPO = '".$date."' WHERE LOGIN='".$login."' AND FECHA_INI ='".$timeInit."'";
-					$result = fun_sql_query($sql);
+					$sql = "UPDATE sesion SET fecha_fin='".$timeEnd."',ACTIVO='".$active."',TIEMPO = '".$date."' WHERE LOGIN='".$login."' AND fecha_ini='".$timeInit."'";
+					$result = $conn->query($sql);
 				}
-
+				$conn->close();
 		 		session_destroy();
 		   	include ("php/add-login.php");
 		 ?>

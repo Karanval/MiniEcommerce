@@ -11,7 +11,13 @@
 	<header>
 		 <?php
 		 		session_start();
-				include("data-base-conexion.php");
+				$servername = "localhost";
+        $username = "root";
+        $db = "miniecommerce";
+        $conn = new mysqli($servername, $username, "", $db);
+        if ($conn->connect_error) {
+           echo "Connection failed: " . $conn->connect_error;
+         }
 				$login = $_SESSION["login"];
 				$timeInit = $_SESSION["timeInit"];
 				$sql = "SELECT * FROM SESION WHERE LOGIN='".$login."' AND FECHA_INI ='".$timeInit."'";

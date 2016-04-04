@@ -41,12 +41,9 @@
       } else {
         $path = null;
       }
-
-      include("php/data-base-conexion.php");
-
 			$sql = "SELECT * FROM PRODUCTOS WHERE NOMBRE = '".$name."'";
       if(!empty($name)){
-  			  $result = $conn->query($sql);
+  			  $result = fun_sql_query($sql);
 					$row = $result->fetch_assoc();
 					$name = $row["NOMBRE"];
 					$path = $row["IMG"];
@@ -96,7 +93,7 @@
 				echo "NO  DATA";
 			}
 			$sql = "SELECT * FROM PRODUCTOS ORDER BY RAND() LIMIT 3";
-			$result = $conn->query($sql);
+			$result = fun_sql_query($sql);
 
 			echo "<center>
 						<section class="."products-section".">
@@ -117,7 +114,6 @@
 			echo "</section>
 						</ul>
 						</center>";
-      $conn->close();
     ?>
 		<a class="home-link" href= "index.php">
 			<button class="home-button">Home</button>

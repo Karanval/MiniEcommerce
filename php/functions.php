@@ -2,7 +2,6 @@
 
      function fun_sql_query($sql){
        $result;
-
        $servername = "localhost";
        $username = "root";
        $db = "miniecommerce";
@@ -15,40 +14,23 @@
 
        return $result;
      }
-     function fun_show_product($name, $img_path,$cost,$nameImage,$cont){
-       $id = "product-img-".$cont;
-       $chain = "<div class="."product-ima"." id=\"$id\">
 
-                  <img src='".$img_path."' class="."product-img".">
-                    <div class="."product-texts".">
+     function fun_show_product($name, $img_path,$cost,$nameImage){
+       $chain = "
+              <li class="."product".">
+                <a href="."product-detail.php?name=".$nameImage." class="."product-link".">
+                  <img width="."200px"." height="."200px"." src='".$img_path."' class="."product-img".">
+                    <div clas="."product-texts".">
                     <p class="."product-name"." >
                       "."$name"."
                     </p>
                     <p class="."product-price"." >
                       Bs. ".  $cost."
                     </p>
-                    </div>
                 </a>
-
-              </div>
+                    </div>
+              </li>
             ";
-      return $chain;
-     }
-
-     function pro_desc($name, $cost, $stock, $desc){
-      $chain = "<div class="."product-des".">Name: ".$name." <br>Cost: ".$cost." <br>Stock: ".$stock;
-      if(isset($desc)){
-        $chain = $chain. " <br>Desc: ".$desc."<br>";
-      }
-      if (session_status() == PHP_SESSION_NONE) {
-        session_start();
-      }
-      if(isset($_SESSION["user"]) ){
-        $login = $_SESSION["user"];
-        #$func ="addToCart(".$name.", ".$login.")";
-        $chain = $chain . "<br><button class=\"add-to-cart\" type="."button"." onclick = addToCart('".$name."','".$login."')>Agregar al carrito</button>";
-      }
-      $chain = $chain . " </div>";
       return $chain;
      }
 

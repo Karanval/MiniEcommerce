@@ -4,12 +4,17 @@
     <meta charset="utf-8">
     <title>Add Customer</title>
     <link rel="stylesheet" type="text/css" href="css/new-custommer.css">
+
+    <script type="text/javascript" src="js/jquery-2.2.2.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/functions.js">	</script>
+
+
   </head>
   <body>
-    <header>
-      <h1 class="title">Mini Ecommerce</h1>
-    </header>
 
+    <center>
     <section class="forms">
       <form class="new-customer-form" action="add-customer-result.php" method="post">
         <h2 class="form-title"> Signin </h2>
@@ -41,7 +46,9 @@
         </fieldset>
         <input class="customer-create" type="submit" value="Create Account">
       </form>
-      <form class="login-form" action="login-result.php" method="post">
+
+
+      <form id="loginForm" class="login-form" action="login-result.php" method="post">
         <fieldset class="customer-fieldset">
           <h2 class="form-title"> Login </h2>
            <input class="customer-data" type="text" name="login" placeholder="Please enter login"><br>
@@ -54,5 +61,6 @@
         <button class="cancel">Cancel</button>
       </a>
     </section>
+  </center>
   </body>
 </html>

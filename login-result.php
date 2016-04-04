@@ -20,16 +20,11 @@
       } else {
         $password = null;
       }
-      $servername = "localhost";
-      $username = "root";
-      $db = "miniecommerce";
-      $conn = new mysqli($servername, $username, "", $db);
-      if ($conn->connect_error) {
-         echo "Connection failed: " . $conn->connect_error;
-       }
+      include("php/functions.php");
       if(!empty($login) && !empty($password)){
+
         $sql = "SELECT * FROM USUARIO WHERE LOGIN='".$login."' AND PASSWD ='$password'";
-        $result = $conn->query($sql);
+        $result = fun_sql_query($sql);
         if ($result->num_rows > 0) {
           session_start();
           if( isset($_SESSION["is_open"])){
@@ -42,23 +37,22 @@
             $timeInit = date("Y-m-d H:i:s");
             $active = 1;
             $sql = "INSERT into SESION (LOGIN,FECHA_INI,ACTIVO) values ('".$login."','".$timeInit."','".$active."')";
-            $result = $conn->query($sql);
+            $result = fun_sql_query($sql);
 
             $_SESSION["login"] = $login;
             $_SESSION["user"]= $name;
             $_SESSION["timeInit"] = $timeInit;
             $_SESSION["is_open"] = true;
-            echo $login."<br>";
-            echo "<p class="."result-message".">Login Successful </p>";
+            echo "<center>".$login."<br></center>";
+            echo "<center><p class="."result-message".">Login Successful </p></center>";
           }
         } else {
 
-          echo "<p class="."result-message".">Incorrect Login </p>";
+          echo "<center><p class="."result-message".">Incorrect Login </p></center>";
         }
       } else {
-        echo "<p class="."result-message".">Enter Login and Password </p>";
+        echo "<center><p class="."result-message".">Enter Login and Password </p></center>";
       }
-      $conn->close();
     ?>
     <br>
     <center>

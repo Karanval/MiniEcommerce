@@ -18,7 +18,7 @@
 
     <section class="products-section">
 		<?php
-        include("php/data-base-conexion.php");
+        include("data-base-conexion.php");
           $products = count($_POST);
           $array = array_keys($_POST); // obtiene los nombres de las varibles
           $array_values = array_values($_POST);// obtiene los valores de las varibles

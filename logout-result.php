@@ -11,17 +11,11 @@
 	<header>
 		 <?php
 		 		session_start();
-				$servername = "localhost";
-        $username = "root";
-        $db = "miniecommerce";
-        $conn = new mysqli($servername, $username, "", $db);
-        if ($conn->connect_error) {
-           echo "Connection failed: " . $conn->connect_error;
-         }
+				include("php/functions.php");
 				$login = $_SESSION["login"];
 				$timeInit = $_SESSION["timeInit"];
 				$sql = "SELECT * FROM SESION WHERE LOGIN='".$login."' AND FECHA_INI ='".$timeInit."'";
-        $result = $conn->query($sql);
+        $result = fun_sql_query($sql);
 
 				if ($result->num_rows > 0) {
 					$row = $result->fetch_assoc();
@@ -32,9 +26,9 @@
 				  $date = $dateDiff->format("%Y-%M-%D %H:%I:%S");
 					$active = 0;
 					$sql = "UPDATE SESION SET FECHA_FIN='".$timeEnd."',ACTIVO='".$active."',TIEMPO = '".$date."' WHERE LOGIN='".$login."' AND FECHA_INI ='".$timeInit."'";
-					$result = $conn->query($sql);
+					$result = fun_sql_query($sql);
 				}
-				$conn->close();
+
 		 		session_destroy();
 		   	include ("php/add-login.php");
 		 ?>

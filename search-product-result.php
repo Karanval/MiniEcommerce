@@ -45,33 +45,21 @@
 
           if ($result->num_rows > 0) {
 							$bproduct = false;
-							#echo "<center><h4>Search results: ".$result->num_rows."!!!! </h4>
-							#			</center><br>";
+							echo "<center><h4>Search results: ".$result->num_rows."!!!! </h4>
+										</center><br>";
 
 							echo "<section class="."products-section".">";
               echo "<ul class="."products-list".">";
 
-							#$datas = $result->fetch_assoc();
-							if ($result->num_rows > 0) {
-								$cont = 0;
-									 while($row = $result->fetch_assoc()) {
-										 echo "<li class= "."product".">";
-											 $name = ($row["NOMBRE"]);
-											 $img_path = $row["IMG"];
-											 $cost = $row["PRECIO"];
-											 $stock = $row["STOCK"];
-											 $desc = $row["DESCRIPCION"];
-											 $nameImage = urlencode($row["NOMBRE"]);
-											 $cont = $cont + 1;
-											 echo pro_desc($name, $cost, $stock, $desc);
-											 echo fun_show_product($name, $img_path,$cost,$nameImage, $cont);
-
-											 echo "<button class=\"switch\" type=\"button\" onclick=\"change($cont)\"><i class=\"material-icons\">add</i></button>";
-										 echo "</li>";
-									 }
-							} else {
-									 echo "0 results";
-							}
+							$num = 0;
+              while($row = $result->fetch_assoc()) {
+								$name_product= ($row["NOMBRE"]);
+                $img_path = $row["IMG"];
+                $cost = $row["PRECIO"];
+ 						    $real_name = urlencode($row["NOMBRE"]);
+								echo fun_show_product($name_product, $img_path,$cost,$real_name);
+								$num= $num+1;
+								}
               	echo "</ul>";
 					} else {
               echo "<center><h4>There is no search results!!!! </h4>
@@ -87,7 +75,7 @@
 				echo "<center>
 								<a href= "."index.php".">
 									<button class="."button1".">
-										Home
+										GO HOMEPAGE.
 									</button>
 								</a>
 							</center>";

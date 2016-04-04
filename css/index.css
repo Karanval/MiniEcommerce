@@ -25,22 +25,27 @@ body{
 .products-list{
   margin: 0;
   padding: 0;
+  padding-top: 50px;
   height: auto;
 }
 .product{
 	text-decoration: none;
 	display: inline-block;
 	margin: 10px;
+  position: relative;
 	width:  240px;
-	height: 280px;
+	height: 240px;
 }
-.product-link{
+.product-ima{
   display: block;
-  text-decoration: none;
-  margin: 0 auto;
+  position: absolute;
+	width:  240px;
+  opacity: 1;
 }
 .product-img{
   margin: 0 auto;
+  width: 200px;
+  height: 200px;
 }
 .product-texts{
 }
@@ -51,9 +56,7 @@ body{
   text-align: left;
   font-size: 20px;
   display: inline-block;
-
 }
-
 .product-price{
   color: grey;
   display:inline-block;
@@ -61,6 +64,25 @@ body{
   padding: 0;
   width: 49%;
   text-align: right;
+}
+.product-des{
+  display: block;
+  position: absolute;
+	width:  240px;
+  padding-top: 50px;
+}
+.switch{
+  border: none;
+  position: relative;
+  left: 90px;
+  opacity: 0.5;
+}
+.material-icons{
+}
+.product-link{
+  display: block;
+  text-decoration: none;
+  margin: 0 auto;
 }
 .index-section{
   text-align: center;

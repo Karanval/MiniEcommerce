@@ -17,7 +17,7 @@
     <section class="products-section">
       <ul class="products-list">
         <?php
-				include ("functions.php");
+				include ("php/functions.php");
         if(isset($_GET['pagina']) && $_GET['pagina']!=1){
           $pagina = 0;
           for ($i=1; $i <$_GET['pagina'] ; $i++) {
@@ -26,10 +26,9 @@
         } else {
           $pagina = 1;
         }
-        include("data-base-conexion.php");
         //$pagina = 3;//para los indices
-        $sql = "SELECT NOMBRE, IMG, PRECIO FROM PRODUCTOS WHERE ACTIVO=1 ";
-        $result = $conn->query($sql);
+        $sql = "SELECT NOMBRE, IMG, PRECIO FROM productos WHERE Activo=1 ";
+        $result = fun_sql_query($sql);
 
         if ($result->num_rows > 0) {
              // output data of each row
@@ -46,7 +45,6 @@
         } else {
              echo "0 results";
         }
-        $conn->close();
         ?>
       </ul>
     </section >

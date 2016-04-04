@@ -9,6 +9,12 @@
 </head>
 <body>
 	<header>
+		 <?php
+		 	include ("php/add-login.php");
+		 ?>
+		<h1 class="title">
+				Minie-commerce
+		</h1>
 	</header>
 	<center>
 		<div>

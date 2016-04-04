@@ -70,17 +70,17 @@
       } else {
         $credit_limit = null;
       }
-      include("data-base-conexion.php");
+      include("php/functions.php");
       if(!empty($login)){
-        $exists_sql = "SELECT * FROM USUARIO WHERE LOGIN='".$login."'";
-        $result = $conn->query($exists_sql);
+        $exists_sql = "SELECT * FROM usuario WHERE LOGIN='".$login."'";
+        $result = fun_sql_query($exists_sql);
         $exists = 0;
         if ($result->num_rows > 0) {
               $exists = 1;
         }
         #if($exists == 1) {
         if($exists==0)  {
-          $insert_sql = "INSERT INTO USUARIO (NOMBRE, APELLIDO_s, TELEFONO,
+          $insert_sql = "INSERT INTO usuario (NOMBRE, APELLIDO_s, TELEFONO,
           DIRECCION, CIUDAD, ESTADO, CODIGO_POSTAL, PAIS, LIMITE_CREDITO, LOGIN,
           PASSWD) VALUES ('".$name."', '".$lastname."', '".$phone."', '".$address."', '".
           $city."', '". $state."', '".$postal_code."', '".$country."', '".$credit_limit."', '"
@@ -88,7 +88,7 @@
           if(!empty($confirm_password) && !empty($password) && strcmp($confirm_password,$password)==0){
             if(!empty($name) && !empty($lastname) && !empty($address) && !empty($city)
             && !empty($country)){
-      			  $result = $conn->query($insert_sql);
+      			  $result = fun_sql_query($insert_sql);
             } else {
               echo "<p class="."result-message"."> Registry incorrect, please review
               the mandatory fields </p>";
@@ -107,7 +107,6 @@
       } else {
         echo "<p class="."result-message"."> Enter login </p>";
       }
-      $conn->close();
     ?>
     <a href="index.php">
       <button class="continue">Continue</button>

@@ -18,7 +18,7 @@
 
     <section class="products-section">
 		<?php
-        include("data-base-conexion.php");
+        include("php/functions.php");
           $products = count($_POST);
           $array = array_keys($_POST); // obtiene los nombres de las varibles
           $array_values = array_values($_POST);// obtiene los valores de las varibles
@@ -28,8 +28,8 @@
 					echo "<form  action="."remove-product-end.php"." method="."post"." enctype="."multipart/form-data".">";
           for($i=0;$i<$products;$i++){
               $array[$i]=$array_values[$i];
-              $sql = "SELECT * FROM PRODUCTOS WHERE ACTIVO=1 AND NOMBRE='".$array[$i]."'";
-              $result = $conn->query($sql);
+              $sql = "SELECT * FROM productos WHERE Activo=1 AND NOMBRE='".$array[$i]."'";
+              $result = fun_sql_query($sql);
 
               if ($result->num_rows > 0) {
                    // output data of each row
@@ -76,7 +76,6 @@
 										</a>
 									";
 					}
-					$conn->close();
     ?>
 	</body>
 </html>
